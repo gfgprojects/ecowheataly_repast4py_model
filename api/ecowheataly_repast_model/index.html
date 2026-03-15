@@ -1,0 +1,2528 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../agents/farm/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>ecowheataly_repast_model - ECOWHEATALY Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ecowheataly_repast_model" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ECOWHEATALY Documentation" class="md-header__button md-logo" aria-label="ECOWHEATALY Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ECOWHEATALY Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ecowheataly_repast_model
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ECOWHEATALY Documentation" class="md-nav__button md-logo" aria-label="ECOWHEATALY Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ECOWHEATALY Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ecowheataly_repast_model
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ecowheataly_repast_model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ecowheataly_repast_model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ecowheataly_repast_model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.farm_counter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        farm_counter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.comm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        comm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.rank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rank
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.international_producers_summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        international_producers_summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.runner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        runner
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.switchOnItalianProduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        switchOnItalianProduction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        context
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.italianProducer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        italianProducer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.agent_logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        agent_logger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.aggregate_data_log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aggregate_data_log
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.aggregate_data_set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aggregate_data_set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.italianProductionLogger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        italianProductionLogger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.italianTractorUseLogger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        italianTractorUseLogger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.italianNitrogenLogger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        italianNitrogenLogger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.italianHerbicideLogger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        italianHerbicideLogger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.italianInsecticideLogger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        italianInsecticideLogger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.buyersInitializeBuyingStrategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        buyersInitializeBuyingStrategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.policyMakerUpdatePolicy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        policyMakerUpdatePolicy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.performInternationalMarketsSessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        performInternationalMarketsSessions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.producersHarvestIfgatherMonth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        producersHarvestIfgatherMonth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.buyersCheckObtainedQuantitiesAndEvolveBuyingStrategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        buyersCheckObtainedQuantitiesAndEvolveBuyingStrategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.switchOnInternationalBuyersAnnealing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        switchOnInternationalBuyersAnnealing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.resetInternationalBuyersPercentageToMove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resetInternationalBuyersPercentageToMove
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.resetInternationalBuyersAnnealingSpeed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resetInternationalBuyersAnnealingSpeed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.resetInternationalBuyersDemandElasticity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resetInternationalBuyersDemandElasticity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.switchOffInternationalBuyersAnnealing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        switchOffInternationalBuyersAnnealing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.updateInternationalBuyersTransportCosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateInternationalBuyersTransportCosts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.updateInternationalBuyersDemandToMovePercentage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateInternationalBuyersDemandToMovePercentage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.updateInternationalProducerStock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateInternationalProducerStock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.interacting_with_ghosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        interacting_with_ghosts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.performItalianProductionSystemModel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        performItalianProductionSystemModel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.updatePolicies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updatePolicies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.recordFarmsData" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        recordFarmsData
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.computeItalianProduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        computeItalianProduction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.updateItalianProductionAndStock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateItalianProductionAndStock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.computeLCAindicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        computeLCAindicators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        step
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.log_international_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        log_international_data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.log_agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        log_agents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        start
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.restore_agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        restore_agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        run
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    agents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    agents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agents/farm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    farm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agents/policy_maker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    policy_maker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agents/international_buyer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    international_buyer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agents/international_producer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    international_producer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    utils
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    utils
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    utils
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ecowheataly_repast_model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ecowheataly_repast_model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.farm_counter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        farm_counter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.comm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        comm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.rank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rank
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.international_producers_summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        international_producers_summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.runner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        runner
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.switchOnItalianProduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        switchOnItalianProduction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        context
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.italianProducer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        italianProducer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.agent_logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        agent_logger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.aggregate_data_log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aggregate_data_log
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.aggregate_data_set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aggregate_data_set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.italianProductionLogger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        italianProductionLogger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.italianTractorUseLogger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        italianTractorUseLogger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.italianNitrogenLogger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        italianNitrogenLogger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.italianHerbicideLogger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        italianHerbicideLogger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.italianInsecticideLogger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        italianInsecticideLogger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.buyersInitializeBuyingStrategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        buyersInitializeBuyingStrategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.policyMakerUpdatePolicy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        policyMakerUpdatePolicy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.performInternationalMarketsSessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        performInternationalMarketsSessions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.producersHarvestIfgatherMonth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        producersHarvestIfgatherMonth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.buyersCheckObtainedQuantitiesAndEvolveBuyingStrategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        buyersCheckObtainedQuantitiesAndEvolveBuyingStrategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.switchOnInternationalBuyersAnnealing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        switchOnInternationalBuyersAnnealing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.resetInternationalBuyersPercentageToMove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resetInternationalBuyersPercentageToMove
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.resetInternationalBuyersAnnealingSpeed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resetInternationalBuyersAnnealingSpeed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.resetInternationalBuyersDemandElasticity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resetInternationalBuyersDemandElasticity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.switchOffInternationalBuyersAnnealing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        switchOffInternationalBuyersAnnealing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.updateInternationalBuyersTransportCosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateInternationalBuyersTransportCosts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.updateInternationalBuyersDemandToMovePercentage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateInternationalBuyersDemandToMovePercentage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.updateInternationalProducerStock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateInternationalProducerStock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.interacting_with_ghosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        interacting_with_ghosts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.performItalianProductionSystemModel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        performItalianProductionSystemModel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.updatePolicies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updatePolicies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.recordFarmsData" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        recordFarmsData
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.computeItalianProduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        computeItalianProduction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.updateItalianProductionAndStock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateItalianProductionAndStock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.computeLCAindicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        computeLCAindicators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        step
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.log_international_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        log_international_data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.log_agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        log_agents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.Model.start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        start
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.restore_agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        restore_agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecowheataly_repast_model.run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        run
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>ecowheataly_repast_model</h1>
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="ecowheataly_repast_model" class="doc doc-heading">
+            <code>ecowheataly_repast_model</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+        <p>mpi4py dipende da un'implementazione di MPI
+(Message Passing Interface) per funzionare correttamente.
+ Su macOS, né Conda né Pip installano automaticamente MPI,
+  quindi dobbiamo farlo manualmente. Non usare conda che non funziona</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ecowheataly_repast_model.farm_counter" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">farm_counter</span> <span class="o">=</span> <span class="mi">0</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ecowheataly_repast_model.comm" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">comm</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ecowheataly_repast_model.rank" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">rank</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">Get_rank</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ecowheataly_repast_model.international_producers_summary" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">international_producers_summary</span> <span class="o">=</span> <span class="kc">None</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="ecowheataly_repast_model.Model" class="doc doc-heading">
+            <code>Model</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Repast4py model</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="ecowheataly_repast_model.Model.runner" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">runner</span> <span class="o">=</span> <span class="n">schedule</span><span class="o">.</span><span class="n">init_schedule_runner</span><span class="p">(</span><span class="n">comm</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="ecowheataly_repast_model.Model.switchOnItalianProduction" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">switchOnItalianProduction</span> <span class="o">=</span> <span class="mi">50</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="ecowheataly_repast_model.Model.context" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">context</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">SharedContext</span><span class="p">(</span><span class="n">comm</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="ecowheataly_repast_model.Model.italianProducer" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">italianProducer</span> <span class="o">=</span> <span class="n">tmpprod</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="ecowheataly_repast_model.Model.agent_logger" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">agent_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">TabularLogger</span><span class="p">(</span><span class="n">comm</span><span class="p">,</span> <span class="n">output_file_name</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;tick&#39;</span><span class="p">,</span> <span class="s1">&#39;(id,type,rank)&#39;</span><span class="p">,</span> <span class="s1">&#39;farm code&#39;</span><span class="p">,</span> <span class="s1">&#39;province&#39;</span><span class="p">,</span> <span class="s1">&#39;altimetry&#39;</span><span class="p">,</span> <span class="s1">&#39;target_yield(kg)&#39;</span><span class="p">,</span> <span class="s1">&#39;crop_acreage&#39;</span><span class="p">,</span> <span class="s1">&#39;farm_acreage&#39;</span><span class="p">,</span> <span class="s1">&#39;yield(kg)&#39;</span><span class="p">,</span> <span class="s1">&#39;production(kg)&#39;</span><span class="p">,</span> <span class="s1">&#39;hours_of_tractor_use&#39;</span><span class="p">,</span> <span class="s1">&#39;N/ha(kg)&#39;</span><span class="p">,</span> <span class="s1">&#39;herbicide&#39;</span><span class="p">,</span> <span class="s1">&#39;insecticide&#39;</span><span class="p">,</span> <span class="s1">&#39;daly&#39;</span><span class="p">,</span> <span class="s1">&#39;nspecies&#39;</span><span class="p">,</span> <span class="s1">&#39;policy_adopted&#39;</span><span class="p">],</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="ecowheataly_repast_model.Model.aggregate_data_log" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">aggregate_data_log</span> <span class="o">=</span> <span class="n">ut</span><span class="o">.</span><span class="n">AggregateData</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="ecowheataly_repast_model.Model.aggregate_data_set" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">aggregate_data_set</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">ReducingDataSet</span><span class="p">(</span><span class="n">loggers</span><span class="p">,</span> <span class="n">comm</span><span class="p">,</span> <span class="s1">&#39;output/aggregate_data.csv&#39;</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="ecowheataly_repast_model.Model.italianProductionLogger" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">italianProductionLogger</span> <span class="o">=</span> <span class="n">loggers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="ecowheataly_repast_model.Model.italianTractorUseLogger" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">italianTractorUseLogger</span> <span class="o">=</span> <span class="n">loggers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="ecowheataly_repast_model.Model.italianNitrogenLogger" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">italianNitrogenLogger</span> <span class="o">=</span> <span class="n">loggers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="ecowheataly_repast_model.Model.italianHerbicideLogger" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">italianHerbicideLogger</span> <span class="o">=</span> <span class="n">loggers</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="ecowheataly_repast_model.Model.italianInsecticideLogger" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">italianInsecticideLogger</span> <span class="o">=</span> <span class="n">loggers</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.buyersInitializeBuyingStrategy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">buyersInitializeBuyingStrategy</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.policyMakerUpdatePolicy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">policyMakerUpdatePolicy</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.performInternationalMarketsSessions" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">performInternationalMarketsSessions</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.producersHarvestIfgatherMonth" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">producersHarvestIfgatherMonth</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.buyersCheckObtainedQuantitiesAndEvolveBuyingStrategy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">buyersCheckObtainedQuantitiesAndEvolveBuyingStrategy</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.switchOnInternationalBuyersAnnealing" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">switchOnInternationalBuyersAnnealing</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.resetInternationalBuyersPercentageToMove" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">resetInternationalBuyersPercentageToMove</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.resetInternationalBuyersAnnealingSpeed" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">resetInternationalBuyersAnnealingSpeed</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.resetInternationalBuyersDemandElasticity" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">resetInternationalBuyersDemandElasticity</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.switchOffInternationalBuyersAnnealing" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">switchOffInternationalBuyersAnnealing</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.updateInternationalBuyersTransportCosts" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateInternationalBuyersTransportCosts</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.updateInternationalBuyersDemandToMovePercentage" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateInternationalBuyersDemandToMovePercentage</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.updateInternationalProducerStock" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateInternationalProducerStock</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.interacting_with_ghosts" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">interacting_with_ghosts</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.performItalianProductionSystemModel" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">performItalianProductionSystemModel</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.updatePolicies" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updatePolicies</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.recordFarmsData" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">recordFarmsData</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.computeItalianProduction" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">computeItalianProduction</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.updateItalianProductionAndStock" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateItalianProductionAndStock</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.computeLCAindicators" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">computeLCAindicators</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.step" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">step</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.log_international_data" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">log_international_data</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.log_agents" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">log_agents</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.start" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">start</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ecowheataly_repast_model.restore_agent" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">restore_agent</span><span class="p">(</span><span class="n">agent_data</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ecowheataly_repast_model.run" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">run</span><span class="p">()</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
