@@ -1,0 +1,25 @@
+buyer_area,Central Asia,Eastern Europe,India,Italy,Northern America,Northern Europe,Oceania,Pakistan,Russian Federation,South America,United States of America,Western Europe
+Central America,Sea|13036,Sea|12842,Sea|18113,Sea|10491,Sea|10484,Sea|9252,Sea|18323,Sea|17777,Sea|13036,Sea|11960,Land|1481,Sea|9093
+Central Asia,Land|7613,Sea|7418,Sea|991,Sea|7990,Sea|19067,Sea|11329,Sea|10830,Sea|0,Sea|7613,Sea|15775,Sea|17278,Sea|11161
+China,Land|15778,Sea|15583,Land|8782,Sea|16155,Sea|9564,Sea|19494,Sea|9748,Land|9686,Land|15778,Sea|20938,Sea|18621,Sea|19326
+Eastern Africa,Sea|7976,Sea|7782,Sea|4505,Sea|8353,Sea|21111,Sea|11692,Sea|10966,Sea|4409,Sea|7976,Sea|11761,Sea|17641,Sea|11524
+Eastern Asia,Sea|16468,Sea|16274,Sea|9472,Sea|16845,Sea|8709,Sea|20184,Sea|10375,Sea|10376,Sea|16468,Sea|21230,Sea|17767,Sea|20016
+Eastern Europe,Sea|8209,Land|8015,Sea|13286,Sea|5664,Sea|18015,Sea|1681,Sea|21540,Sea|12950,Land|8209,Sea|13308,Sea|9833,Sea|1855
+India,Sea|7949,Sea|7755,Domestic|0,Sea|8326,Sea|18163,Sea|11665,Sea|10006,Land|991,Sea|7949,Sea|15609,Sea|17615,Sea|11497
+Italy,Sea|3141,Sea|2947,Sea|8326,Domestic|0,Sea|17497,Sea|4043,Sea|16580,Sea|7990,Sea|3141,Sea|11521,Sea|9993,Sea|3875
+Middle Africa,Sea|11383,Sea|11189,Sea|11671,Sea|8838,Sea|18795,Sea|9113,Sea|13718,Sea|11836,Sea|11383,Sea|7986,Sea|12283,Sea|8945
+Northern Africa,Sea|2161,Sea|1967,Sea|5977,Sea|2468,Sea|19235,Sea|5781,Sea|14231,Sea|5641,Sea|2161,Sea|13260,Sea|11731,Sea|5614
+Northern America,Sea|20042,Sea|19847,Sea|18163,Sea|17497,Domestic|0,Sea|16649,Sea|14455,Sea|19067,Sea|20042,Sea|16048,Land|10407,Sea|16490
+Northern Europe,Sea|6588,Sea|6394,Sea|11665,Sea|4043,Sea|16649,Domestic|0,Sea|19919,Sea|11329,Sea|6588,Sea|11687,Sea|8754,Sea|243
+Oceania,Sea|16203,Sea|16008,Sea|10006,Sea|16580,Sea|14455,Sea|19919,Domestic|0,Sea|10830,Sea|16203,Sea|14470,Sea|18247,Sea|19751
+Pakistan,Sea|7613,Sea|7418,Land|991,Sea|7990,Sea|19067,Sea|11329,Sea|10830,Domestic|0,Sea|7613,Sea|15775,Sea|17278,Sea|11161
+Russian Federation,Land|0,Land|716,Sea|7949,Sea|3141,Sea|20042,Sea|6588,Sea|16203,Sea|7613,Domestic|0,Sea|14066,Sea|12538,Sea|6420
+South America,Sea|12376,Sea|12182,Sea|14949,Sea|9831,Sea|16317,Sea|9996,Sea|15456,Sea|15115,Sea|12376,Land|1846,Sea|9982,Sea|9828
+South-eastern Asia,Sea|12162,Sea|11968,Sea|5234,Sea|12540,Sea|13977,Sea|15878,Sea|5707,Sea|6138,Sea|12162,Sea|16271,Sea|21828,Sea|15711
+Southern Africa,Sea|10867,Sea|10673,Sea|7136,Sea|11244,Sea|21349,Sea|12911,Sea|10022,Sea|7301,Sea|10867,Sea|8474,Sea|15014,Sea|12743
+Southern Asia,Sea|11073,Sea|10879,Land|4077,Sea|11450,Sea|16231,Sea|14789,Sea|9303,Sea|4982,Sea|11073,Sea|17204,Sea|20739,Sea|14621
+Southern Europe,Sea|3664,Sea|3470,Sea|8759,Sea|956,Sea|16635,Sea|3181,Sea|17013,Sea|8423,Sea|3664,Sea|10659,Sea|9131,Sea|3013
+United States of America,Sea|12538,Sea|12343,Sea|17615,Sea|9993,Land|10407,Sea|8754,Sea|18247,Sea|17278,Sea|12538,Sea|11673,Domestic|0,Sea|8595
+Western Africa,Sea|9849,Sea|9655,Sea|13377,Sea|7304,Sea|17395,Sea|7579,Sea|15424,Sea|13542,Sea|9849,Sea|8276,Sea|10749,Sea|7411
+Western Asia,Sea|2243,Sea|2049,Sea|6357,Sea|2729,Sea|19570,Sea|6116,Sea|14611,Sea|6021,Sea|2243,Sea|13595,Sea|12066,Sea|5948
+Western Europe,Sea|6707,Sea|6513,Sea|11784,Sea|4162,Sea|16768,Sea|214,Sea|20038,Sea|11448,Sea|6707,Sea|11806,Sea|8873,Sea|349

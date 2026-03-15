@@ -1,0 +1,7 @@
+verboseFlag=False
+recordItalianFarmersData=False
+initial_average_price=95.63
+transport_cost_per_ton_per_km_by_sea=0.000
+transport_cost_per_ton_per_km_by_land=0.000
+market_sessions_per_year=12
+percentage_of_demand_to_move_from_expensive_to_cheap_producer=0.05

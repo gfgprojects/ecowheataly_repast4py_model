@@ -1,0 +1,6 @@
+name,duration,payment/ha,profit,product,n_type,n_effect,h_type,h_effect,i_type,i_effect,admin_costs
+eco4,2,5,0.01,0.0,optional,0.2,optional,0.3,optional,0.15,10
+sra19,5,5,-1.0,-1.0,optional,0.2,mandatory,0.3,mandatory,0.3,30
+sra20,5,5,-1.0,-1.0,mandatory,0.25,optional,0.25,optional,0.25,30
+sra19plus20,5,5.5,-1.0,-1.0,mandatory,0.25,mandatory,0.25,mandatory,0.25,45
+
