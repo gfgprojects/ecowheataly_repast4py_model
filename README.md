@@ -1,7 +1,3 @@
-# Ecowheataly repast4py model
-
-[Documentation](https://gfgprojects.github.io/ecowheataly_repast4py_model/)
-
 # ECOWHEATALY Repast4Py Model
 
 Agent-based model of the wheat production system implemented in **Repast4Py**.
@@ -9,6 +5,8 @@ Agent-based model of the wheat production system implemented in **Repast4Py**.
 The model simulates interactions between farms, policy makers, and international market actors in order to analyse the effects of agricultural policies, environmental constraints, and market dynamics on wheat production and sustainability outcomes.
 
 The model is part of the **ECOWHEATALY** research project.
+
+Visit the [Documentation](https://gfgprojects.github.io/ecowheataly_repast4py_model/) page for additional details.
 
 ---
 
@@ -54,6 +52,7 @@ The main simulation engine coordinates:
 
 ## Repository Structure
 
+```
 ecowheataly_repast4py_model
 │
 ├── ecowheataly_repast_model.py # Main simulation model
@@ -67,6 +66,7 @@ ecowheataly_repast4py_model
 │
 └── utils/
   └── utils.py
+```
 
 ---
 
