@@ -1,3 +1,89 @@
 # Ecowheataly repast4py model
 
 [Documentation](https://gfgprojects.github.io/ecowheataly_repast4py_model/)
+
+# ECOWHEATALY Repast4Py Model
+
+Agent-based model of the wheat production system implemented in **Repast4Py**.
+
+The model simulates interactions between farms, policy makers, and international market actors in order to analyse the effects of agricultural policies, environmental constraints, and market dynamics on wheat production and sustainability outcomes.
+
+The model is part of the **ECOWHEATALY** research project.
+
+---
+
+## Overview
+
+ECOWHEATALY is an **agent-based simulation model (ABM)** designed to study:
+
+- the behaviour of heterogeneous wheat farms
+- policy interventions in agricultural systems
+- international wheat market dynamics
+- environmental impacts of agricultural production
+
+The model integrates:
+
+- farm decision-making
+- policy incentives and constraints
+- international buyers and producers
+- sustainability indicators based on **Life Cycle Assessment (LCA)**.
+
+The model is implemented using **Repast4Py**, allowing scalable simulations with **MPI parallel computing**.
+
+---
+
+## Model Architecture
+
+The simulation includes several interacting agents:
+
+| Agent | Description |
+|------|-------------|
+| Farm | Represents agricultural producers deciding production and input use |
+| Policy Maker | Implements agricultural policy instruments |
+| International Buyers | Demand wheat on the global market |
+| International Producers | Compete with domestic production |
+
+The main simulation engine coordinates:
+
+- market sessions
+- farm production decisions
+- policy interactions
+- environmental indicator computation.
+
+---
+
+## Repository Structure
+
+ecowheataly_repast4py_model
+│
+├── ecowheataly_repast_model.py # Main simulation model
+├── params.py # Model parameters
+│
+├── agents/
+│ ├── farm.py
+│ ├── policy_maker.py
+│ ├── international_buyer.py
+│ └── international_producer.py
+│
+└── utils/
+  └── utils.py
+
+---
+
+## Requirements
+
+The model requires Python and several scientific and simulation libraries.
+
+Main dependencies include:
+
+- `repast4py`
+- `mpi4py`
+- `numpy`
+- `pandas`
+- `brightway2` (for environmental impact calculations)
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+
