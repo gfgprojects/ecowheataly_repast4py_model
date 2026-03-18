@@ -1,0 +1,12 @@
+pypardiso==0.4.6
+bw-migrations==0.2
+bw-recipe-2016==0.4
+bw2analyzer==0.10
+bw2calc==1.8.2
+bw2data==3.6.6
+bw2io==0.8.12
+bw2parameters==1.1.0
+bw_processing==1.0
+numpy==2.4.3
+pandas==3.0.1
+scipy==1.17.1

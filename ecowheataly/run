@@ -1,7 +1,7 @@
 #creates the initialization files
-#rm abm_input_artificial_farms_*.csv
-#rm abm_input_real_farms_*.csv
-#python load_balancing.py $1
+rm abm_input_artificial_farms_*.csv
+rm abm_input_real_farms_*.csv
+python load_balancing.py $1
 #Create the output folder if needed
 if [ ! -d output ] 
 then
@@ -25,6 +25,6 @@ fi
 #run the simulation
 #------------------ 
 echo "starting simulation" $(date)
-#mpirun -n $1 python ecowheataly_repast_model.py
-mpirun -n 5 python ecowheataly_repast_model.py
+mpirun -n $1 python ecowheataly_repast_model.py
+#mpirun -n 5 python ecowheataly_repast_model.py
 echo "simulation finished" $(date)

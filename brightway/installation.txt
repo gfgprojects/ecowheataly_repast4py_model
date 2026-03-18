@@ -1,0 +1,25 @@
+#create the environment
+
+python3 -m venv bw2env
+
+#activate
+
+source bw2env/bin/activate
+
+#install brightway2
+pip install brightway2 pypardiso
+
+python setup01_brightway2_database_and_methods.py 
+
+#install ReCiPe 2016
+
+pip install bw-recipe-2016
+
+python setup02_recipe_2016_ecowheataly_customization.py
+
+pip install thefuzz
+
+python setup03_create_custom_databases_for_tractors_N_and_ecowheataly.py
+
+compute_inputs_and_lca.py
+

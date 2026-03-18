@@ -1,0 +1,5 @@
+mpi4py==4.0.3
+repast4py==1.1.6
+brightway2==2.4.
+bw-recipe-2016==0.4
+thefuzz==0.22.1

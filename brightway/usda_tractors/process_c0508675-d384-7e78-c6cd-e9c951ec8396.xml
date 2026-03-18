@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ecoSpold xmlns="http://www.EcoInvent.org/EcoSpold01">
+    <dataset number="314845" generator="openLCA" timestamp="2024-02-22T18:48:36.262+01:00">
+        <metaInformation>
+            <processInformation>
+                <referenceFunction datasetRelatesToProduct="true" name="work; ag. tractors for growing win wheat, 2014 fleet, all fuels; 100-175HP" localName="work; ag. tractors for growing win wheat, 2014 fleet, all fuels; 100-175HP" infrastructureProcess="false" amount="1.0" unit="MJ" category="Agriculture, forestry and fishing" subCategory="Support activities for crop production" localCategory="Agriculture, forestry and fishing" localSubCategory="Support activities for crop production" generalComment="&#10;This unit process/ gate-to-gate dataset represents the production of 1 MJ of work by 100-175HP ag. tractors operating in 2014 in Arkansas (US State).  Multiple fuels are used (Gasoline, Diesel).  The process technologies represented are an aggregation of the exhaust technologies and control technologies over multiple model years as described in the USEPA's NONROAD model documentation (available at http://www.epa.gov/otaq/nonrdmdl.htm). Applicable classifications include ISIC 0161, NAIC 115110, UNSPSC 25101901. This dataset was prepared in ILCD format using the UWDFE Lab Excel to ILCD File Generator (gamma version, March 2014).&#10;"/>
+                <geography location="US-AR" text="The unit process is assumed to represent operation in Arkansas (US State)."/>
+                <technology text="The process technologies represent the exhaust and evaporative technologies over multiple model years as described in the USEPA's NONROAD model documentation (available at http://www.epa.gov/otaq/nonrdmdl.htm). The minimum, average, and maximum operating temperatures are 9, 14, and 19 degrees C respectively, reflecting the temperatures during the growing season for win wheat in Arkansas .  Included processes are fuel transport, consumption, and combustion; lubricant transport, use, and waste management; equipment and spare part set production; equipment retirement; and equipment storage."/>
+                <timePeriod dataValidForEntirePeriod="true" text="Start and end dates match the equipment operating year.">
+                    <startDate>2014-01-01+01:00</startDate>
+                    <endDate>2014-12-31+01:00</endDate>
+                </timePeriod>
+                <dataSetInformation type="1" impactAssessmentResult="false" timestamp="2019-04-25T14:43:12.077+02:00" version="0.0" internalVersion="0.0" energyValues="0" languageCode="en" localLanguageCode="en"/>
+            </processInformation>
+            <modellingAndValidation>
+                <representativeness samplingProcedure="Boundary conditions are defined to represent equipment operation, maintenance, production, storage, and retirement based on the expected equipment lives and annual use rates in the NONROAD documentation. Representations of uncertainty are not included in aggregate fleet datasets but can be added to cover fuel carbon mass fraction, fuel consumption, and CO2 emissions; load factors; fuel sulfur and ethanol contents; air emissions and waste management; and fuel and lubricant transport as described in Cooper et. al “Unit process data for agricultural self-propelled equipment” University of Washington Design for Environment Laboratory, March 2013. https://data.nal.usda.gov/dataset/unit-process-data-agricultural-self-propelled-equipment "/>
+                <source number="1647" sourceType="0" firstAuthor="Parameterization in Life Cycle Assessment Inventory Data: review of current use and the representation of uncertainty" title="Cooper, J.S., Noon, M., Kahn, E.  (2012) Parameterization in Life Cycle Assessment Inventory Data: review of current use and the representation of uncertainty" placeOfPublications="unknown" text="Cooper, J.S., Noon, M., Kahn, E.  (2012). Parameterization in Life Cycle Assessment Inventory Data: review of current use and the representation of uncertainty. International Journal of Life Cycle Assessment, 17(6), 689-695.  doi:10.1007/s11367-012-0411-1 Retrieved from http://link.springer.com/content/pdf/10.1007/s11367-012-0411-1.pdf"/>
+                <source number="1648" sourceType="0" firstAuthor="Commentary on issues in data quality analysis in life cycle assessment" title="Cooper, J.S., Kahn, E. (2012) Commentary on issues in data quality analysis in life cycle assessment" placeOfPublications="unknown" text="Cooper, J.S., Kahn, E. (2012). Commentary on issues in data quality analysis in life cycle assessment. International Journal of Life Cycle Assessment, 17(4), 499-503.  doi:10.1007/s11367-011-0371-x Retrieved from http://link.springer.com/article/10.1007%2Fs11367-011-0371-x"/>
+                <source number="1649" sourceType="0" firstAuthor="Unit process data for agricultural self-propelled equipment version 1" title="Cooper et. al. (2014) “Unit process data for agricultural self-propelled equipment, Version 1” University of Washington Design for Environment Laboratory. Unpublished report. https://data.nal.usda.gov/dataset/unit-process-data-agricultural-self-propelled-equipment-version-1" placeOfPublications="unknown" text="This document describes the preparation of datasets for the LCA Digital Commons that represent unit process/ gate-to-gate operations for the production of work (in MJ) by agricultural self-propelled equipment and fleets of agricultural self-propelled equipment. The data cover 19 types of fleets and over 200 types of self-propelled equipment datasets, representing the potential to prepare thousands of unit-process datasets by varying the operating and model years, applicable power ranges, and operating temperatures.&#13;&#10;&#13;&#10;The key information source used for datasets development is the documentation and supporting data developed for the US Environmental Protection Agency (USEPA) NONROAD2008a model. In addition to the data and mathematical relationships described in the NONROAD documentation, data from a range of sources are used to add lubricant use and management estimates; add equipment production and storage, spare parts production, and equipment retirement estimates; estimate specific air emissions and groupings of air emissions; and add variability and uncertainty estimates."/>
+                <validation proofReadingDetails="The review panel convened during March of 2013 and January of 2014 to review data preparation methods. The panel members were Troy Hawkins (National Risk Management Research Laboratory, USEPA), Alberta Carpenter (National Renewable Energy Laboratory, USDOE), Thomas Transue (Lockheed Martin Information Technology), Wes Ingwersen (National Risk Management Research Laboratory, USEPA), and Harvey Michaels (Office of Transportation and Air Quality, USEPA)." proofReadingValidator="1068"/>
+            </modellingAndValidation>
+            <administrativeInformation>
+                <dataEntryBy person="1071"/>
+                <dataGeneratorAndPublication person="1071" dataPublishedIn="0" copyright="true" accessRestrictedTo="0"/>
+                <person number="1068" name="LCA Commons Agricultural Equipment Peer Review Panel" telephone="" email="" companyCode="unknown"/>
+                <person number="1071" name="Joyce Cooper" email="cooperjs@u.washington.edu" companyCode="unknown"/>
+            </administrativeInformation>
+        </metaInformation>
+        <flowData>
+            <exchange number="10643" category="Agriculture, forestry and fishing" subCategory="Support activities for crop production" localCategory="Agriculture, forestry and fishing" localSubCategory="Support activities for crop production" name="work; ag. tractors for growing win wheat, 2014 fleet, all fuels; 100-175HP" location="US-AR" unit="MJ" meanValue="1.0" infrastructureProcess="false">
+                <outputGroup>0</outputGroup>
+            </exchange>
+            <exchange number="10555" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="" name="Mercury (divalent gaseous)" unit="kg" meanValue="1.21396859532079E-9" formula="Hg+2" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B); Mercury (divalent gaseous)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10549" category="Manufacturing" subCategory="Petroleum Products" localCategory="Manufacturing" localSubCategory="Petroleum Products" name="CUTOFF lubricating oil; for use in agricultural equipment; at refinery" unit="kg" meanValue="1.30255410601501E-4" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <inputGroup>5</inputGroup>
+            </exchange>
+            <exchange number="10627" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="057117-31-4" name="2,3,4,7,8-Pentachlorodibenzofuran" unit="kg" meanValue="1.67871650220981E-11" formula="C12H3Cl5O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10635" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000120-12-7" name="Anthracene" unit="kg" meanValue="5.39605867900531E-11" formula="C14H10" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="15997" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000124-38-9" name="Carbon dioxide, fossil" unit="kg" meanValue="0.198737515594631" formula="CO2" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="16049" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="010024-97-2" name="Dinitrogen monoxide" unit="kg" meanValue="5.02487763057565E-6" formula="N2O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="13339" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000074-82-8" name="Methane, fossil" unit="kg" meanValue="1.91223407790636E-6" formula="CH4" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10579" category="Agriculture, forestry and fishing" subCategory="Support activities for crop production" localCategory="Agriculture, forestry and fishing" localSubCategory="Support activities for crop production" name="CUTOFF spare part set; ag. tractors; 100-175HP" unit="Item(s)" meanValue="8.08811562722775E-7" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <inputGroup>5</inputGroup>
+            </exchange>
+            <exchange number="10583" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000056-55-3" name="Benz(a)anthracene" unit="kg" meanValue="8.04993857665179E-11" formula="C18H12" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B); Benz(a)anthracene" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10563" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="016065-83-1" name="Chromium, ion" unit="kg" meanValue="7.91090409118591E-9" formula="Cr3+" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10603" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000205-99-2" name="Benzo(b)fluoranthene" unit="kg" meanValue="5.58922374808248E-11" formula="C20H12" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="14734" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000107-02-8" name="Acrolein" unit="kg" meanValue="3.79394670691682E-7" formula="C3H4O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="12790" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="018540-29-9" name="Chromium VI" unit="kg" meanValue="4.07530950237603E-9" formula="Cr6+" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10629" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="039001-02-0" name="Octachlorodibenzofuran" unit="kg" meanValue="6.69599579728322E-11" formula="C12Cl8O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="14585" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000630-08-0" name="Carbon monoxide, fossil" unit="kg" meanValue="5.54685434221739E-4" formula="CO" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="15611" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="007440-02-0" name="Nickel" unit="kg" meanValue="7.58424752253714E-7" formula="Ni" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10571" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="055673-89-7" name="1,2,3,4,7,8,9-Heptachlorodibenzofuran" unit="kg" meanValue="6.6797099760061E-12" formula="C12HCl7O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10587" category="Agriculture, forestry and fishing" subCategory="Support activities for crop production" localCategory="Agriculture, forestry and fishing" localSubCategory="Support activities for crop production" name="CUTOFF storage; of farm equipment; at farm" unit="m2" meanValue="1.46031773883989E-5" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <inputGroup>5</inputGroup>
+            </exchange>
+            <exchange number="10581" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000206-44-0" name="Fluoranthene" unit="kg" meanValue="1.9176586124134E-9" formula="C16H10" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10595" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="070648-26-9" name="1,2,3,4,7,8-Hexachlorodibenzofuran" unit="kg" meanValue="2.83447310961716E-11" formula="C12H2Cl6O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10621" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="" name="Mercury (particulate)" unit="kg" meanValue="6.25889468659181E-10" formula="" generalComment="USDA LCADC data quality = (A,B,B,A,B,A,B,B); Mercury (particulate)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="13969" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000050-32-8" name="Benzo(a)pyrene" unit="kg" meanValue="4.00172610205543E-11" formula="C20H12" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10631" category="Water supply; sewerage, waste management and remediation activities" subCategory="Waste treatment and disposal" localCategory="Water supply; sewerage, waste management and remediation activities" localSubCategory="Waste treatment and disposal" name="CUTOFF equ. retirement; ag. tractors; 100-175HP" unit="Item(s)" meanValue="8.08811562722775E-7" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <inputGroup>5</inputGroup>
+            </exchange>
+            <exchange number="10613" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="" name="Total Organic Gases" unit="kg" meanValue="1.27280340201755E-4" formula="" generalComment="USDA LCADC data quality = (A,B,B,A,B,A,B,B); Total Organic Gases" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10597" category="Agriculture, forestry and fishing" subCategory="Support activities for crop production" localCategory="Agriculture, forestry and fishing" localSubCategory="Support activities for crop production" name="CUTOFF production; ag. tractors; 100-175HP" unit="Item(s)" meanValue="8.08811562722775E-7" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <inputGroup>5</inputGroup>
+            </exchange>
+            <exchange number="14812" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000106-99-0" name="Butadiene" unit="kg" meanValue="2.33907783694206E-7" formula="C4H6" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10617" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000193-39-5" name="Indeno(1,2,3,c,d)pyrene" unit="kg" meanValue="9.41128916661384E-12" formula="C22H12" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="13389" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" name="Particulates, &gt; 2.5 um, and &lt; 10um" unit="kg" meanValue="3.37403810728877E-6" formula="PM10-PM2.5" generalComment="USDA LCADC data quality = (A,B,B,A,B,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="13907" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="" name="Arsenic" unit="kg" meanValue="4.37076547686431E-9" formula="" generalComment="USDA LCADC data quality = (A,B,B,A,B,A,B,B); Arsenic &amp; compounds" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10559" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="040321-76-4" name="1,2,3,7,8-Pentachlorodibenzo-p-Dioxin" unit="kg" meanValue="6.37209179154751E-12" formula=" C12H3Cl5O2" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10561" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="072918-21-9" name="1,2,3,7,8,9-Hexachlorodibenzofuran" unit="kg" meanValue="7.51465416711838E-12" formula="C12H2Cl6O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10413" category="Manufacturing" subCategory="Petroleum Products" localCategory="Manufacturing" localSubCategory="Petroleum Products" name="CUTOFF gasoline; for offroad use; at refinery; RVP8, S%0.034, EtOH m%0.81b%0.087" unit="kg" meanValue="2.13972831403065E-5" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <inputGroup>5</inputGroup>
+            </exchange>
+            <exchange number="10567" category="Manufacturing" subCategory="Petroleum Products" localCategory="Manufacturing" localSubCategory="Petroleum Products" name="CUTOFF lubricating oil management; at farm" unit="kg" meanValue="2.60510821203002E-5" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <inputGroup>5</inputGroup>
+            </exchange>
+            <exchange number="10585" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="060851-34-5" name="2,3,4,6,7,8-Hexachlorodibenzofuran" unit="kg" meanValue="1.87208105656311E-11" formula="C12H2Cl6O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="15463" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000100-42-5" name="Styrene" unit="kg" meanValue="7.44531719494591E-8" formula="C8H8" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10607" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000091-20-3" name="Naphthalene" unit="kg" meanValue="5.23256505335011E-8" formula="C10H8" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="13947" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" name="Particulates, &lt; 2.5 um" unit="kg" meanValue="1.09082904806674E-4" generalComment="USDA LCADC data quality = (A,B,B,A,B,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10619" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="" name="Non-Methane Hydrocarbons" unit="kg" meanValue="1.17045713265011E-4" formula="" generalComment="USDA LCADC data quality = (A,B,B,A,B,A,B,B); Non-Methane Hydrocarbons" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10611" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="000540-84-1" name="2,2,4-Trimethylpentane" unit="kg" meanValue="9.23559962688337E-8" formula="C8H18" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10573" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="39227-28-6" name="1,2,3,4,7,8-Hexachlorodibenzo-p-Dioxin" unit="kg" meanValue="8.96485211015982E-12" formula="C12H2Cl6O2" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="14090" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="001746-01-6" name="Dioxins, measured as 2,3,7,8-tetrachlorodibenzo-p-dioxin" unit="kg" meanValue="7.53671070553034E-12" generalComment="USDA LCADC data quality = (A,B,B,A,B,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10551" category="Manufacturing" subCategory="Petroleum Products" localCategory="Manufacturing" localSubCategory="Petroleum Products" name="CUTOFF diesel; for offroad use; at refinery, S%0.002" unit="kg" meanValue="0.0626593176884538" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <inputGroup>5</inputGroup>
+            </exchange>
+            <exchange number="15270" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000083-32-9" name="Acenaphthene" unit="kg" meanValue="1.12498500217568E-8" formula="C12H10" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="14074" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" name="Sulfur dioxide" unit="kg" meanValue="2.3439826476857E-6" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="13006" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="007439-97-6" name="Mercury" unit="kg" meanValue="2.35313441249473E-9" formula="Hg" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="14479" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000100-41-4" name="Benzene, ethyl-" unit="kg" meanValue="3.89857044842771E-7" formula="C8H10" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="15515" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000124-38-9" name="Carbon dioxide, biogenic" unit="kg" meanValue="3.81242287179508E-6" formula="CO2" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10553" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000208-96-8" name="Acenaphthylene" unit="kg" meanValue="9.47300626466946E-9" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10593" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="67562-39-4" name="1,2,3,4,6,7,8-Heptachlorodibenzofuran" unit="kg" meanValue="5.86686288366705E-11" formula="C12HCl7O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="14742" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" name="NMVOC, non-methane volatile organic compounds, unspecified origin" unit="kg" meanValue="1.25248176748429E-4" generalComment="USDA LCADC data quality = (A,B,B,A,B,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10601" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="051207-31-9" name="2,3,7,8-Tetrachlorodibenzofuran" unit="kg" meanValue="1.90066851058934E-11" formula="C12H4Cl4O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="13284" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="011104-93-1" name="Nitrogen oxides" unit="kg" meanValue="0.00148221036483949" formula="NOx as NO2" generalComment="USDA LCADC data quality = (A,B,B,A,B,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10577" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000191-24-2" name="Benzo(g,h,i)perylene" unit="kg" meanValue="2.30806291615142E-11" formula="C22H12" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10575" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000086-73-7" name="Fluorene" unit="kg" meanValue="1.12549952117269E-8" formula="C13H10" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10569" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="" name="Secondary Organic Aerosol" unit="kg" meanValue="2.9662965299409E-6" formula="" generalComment="USDA LCADC data quality = (A,B,B,A,B,A,B,B); Secondary Organic Aerosol" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10637" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="019408-74-3" name="1,2,3,7,8,9-Hexachlorodibenzo-p-Dioxin" unit="kg" meanValue="3.22996862861646E-11" formula="C12H2Cl6O2" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10547" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="" name="Non-Methane Organic Gases" unit="kg" meanValue="1.25368106123849E-4" formula="" generalComment="USDA LCADC data quality = (A,B,B,A,B,A,B,B); Non-Methane Organic Gases" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="15661" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" name="Toluene" unit="kg" meanValue="1.87989971655457E-6" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="16031" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="007664-41-7" name="Ammonia" unit="kg" meanValue="0.00162494376831249" formula="NH3" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10609" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="057117-41-6" name="1,2,3,7,8-Pentachlorodibenzofuran" unit="kg" meanValue="7.58073686729433E-12" formula="C12H3Cl5O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10557" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="057117-44-9" name="1,2,3,6,7,8-Hexachlorodibenzofuran" unit="kg" meanValue="1.29200332793086E-11" formula="C12H2Cl6O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10589" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000123-38-6" name="Propanal" unit="kg" meanValue="1.47662025369992E-6" formula="C3H6O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10565" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="057653-85-7" name="1,2,3,6,7,8-Hexachlorodibenzo-p-Dioxin" unit="kg" meanValue="1.7578146789157E-11" formula="C12H2Cl6O2" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10625" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000129-00-0" name="Pyrene" unit="kg" meanValue="3.3428553767102E-10" formula="C16H10" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10591" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000207-08-9" name="Benzo(k)fluoranthene" unit="kg" meanValue="4.01491889685056E-11" formula="C20H12" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="14613" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="001330-20-7" name="Xylene" unit="kg" meanValue="1.33068227732531E-6" formula="C6H4(CH3)2" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="12563" category="Transportation and Warehousing" subCategory="Truck" localCategory="Transportation and Warehousing" localSubCategory="Truck" name="CUTOFF local area trucking; class 6, average fuel" unit="t*km" meanValue="0.00464065552461214" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <inputGroup>5</inputGroup>
+            </exchange>
+            <exchange number="12731" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000075-07-0" name="Acetaldehyde" unit="kg" meanValue="6.64227037416382E-6" formula="CH3CHO" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="14351" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="007439-96-5" name="Manganese" unit="kg" meanValue="5.10458074669865E-7" formula="Mn" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="13903" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000050-00-0" name="Formaldehyde" unit="kg" meanValue="1.47853190281362E-5" formula="CH2O" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10639" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="035822-46-9" name="1,2,3,4,6,7,8-Heptachlorodibenzo-p-Dioxin" unit="kg" meanValue="2.10937176241814E-10" formula="C12HCl7O2" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10615" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000218-01-9" name="Chrysene" unit="kg" meanValue="2.14315298121231E-10" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10623" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000053-70-3" name="Dibenzo(a,h)anthracene" unit="kg" meanValue="3.2610600489804E-13" formula="C22H14" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="15601" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000110-54-3" name="Hexane" unit="kg" meanValue="2.00348709496873E-7" formula="C6H14" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="15451" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000071-43-2" name="Benzene" unit="kg" meanValue="2.55063511033801E-6" formula="C6H6" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10633" category="Emission to air unmapped" subCategory="low population density unmapped" localCategory="Emission to air unmapped" localSubCategory="low population density unmapped" CASNumber="003268-87-9" name="Octachlorodibenzo-p-dioxin" unit="kg" meanValue="9.74489995395491E-10" formula="C12Cl8O2" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+            <exchange number="10605" category="Emission to air" subCategory="low population density" localCategory="Emission to air" localSubCategory="low population density" CASNumber="000085-01-8" name="Phenanthrene" unit="kg" meanValue="2.92538449436968E-8" formula="C14H10" generalComment="USDA LCADC data quality = (A,B,B,A,A,A,B,B)" infrastructureProcess="false">
+                <outputGroup>4</outputGroup>
+            </exchange>
+        </flowData>
+    </dataset>
+</ecoSpold>
