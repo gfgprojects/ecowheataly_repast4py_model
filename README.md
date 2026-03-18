@@ -94,18 +94,37 @@ git clone https://github.com/gfgprojects/ecowheataly_repast4py_model.git
 cd ecowheataly_repast4py_model
 python3 -m venv repast4py_venv        #optional: create an environment
 source repast4py_venv/bin/activate    #optional: activate the environment
-env CC=mpicxx CXX=mpicxx 
+pip install mpi4py
+env CC=mpicxx CXX=mpicxx pip install repast4py
+```
+At this point, in case you get an error about missed python.h file install python development package.
+For example, in case of python 3.8 on Ubuntu Linux type
+```bash
+sudo apt install python3.8-dev
+```
+Then, continue the installation with the following commnds
+
+```bash
 pip install -r requirements.txt
 cd brightway
 python setup01_brightway2_database_and_methods.py
 python setup02_recipe_2016_ecowheataly_customization.py
 python setup03_create_custom_databases_for_tractors_N_and_ecowheataly.py
+cd ../ecowheataly
+./run 5  #run the ecowheataly
 ```
-Install additional dependencies if needed:
 
+Install additional dependencies if needed:
 ```bash
 pip install -r requirements1.txt
 ```
 all dependencies are listed in requirements_all.txt
 
+in case of troubles you can reinstall openmpi and mpi4py
+
+```bash
+sudo apt install libopenmpi-dev openmpi-bin
+pip uninstall mpi4py
+pip install mpi4py --no-cache-dir
+```
 
