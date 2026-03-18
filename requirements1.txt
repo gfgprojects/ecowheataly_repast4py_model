@@ -1,3 +1,5 @@
+mpi4py==4.0.3
+repast4py==1.1.6
 pypardiso==0.4.6
 bw-migrations==0.2
 bw-recipe-2016==0.4
