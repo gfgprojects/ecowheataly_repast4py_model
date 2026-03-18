@@ -1,3 +1,5 @@
+![Logo](ecowheataly_loghi.png)
+
 <img src="ecowheataly_loghi.png" alt="descrizione" width="300" align="center">
 
 # ECOWHEATALY Repast4Py Model
