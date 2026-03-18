@@ -97,7 +97,7 @@ source repast4py_venv/bin/activate    #optional: activate the environment
 pip install mpi4py
 env CC=mpicxx CXX=mpicxx pip install repast4py
 ```
-At this point, in case you get an error about missed python.h file install python development package.
+At this point, in case you get an error about missed python.h file, install python development package.
 For example, in case of python 3.8 on Ubuntu Linux type
 ```bash
 sudo apt install python3.8-dev
@@ -110,8 +110,9 @@ cd brightway
 python setup01_brightway2_database_and_methods.py
 python setup02_recipe_2016_ecowheataly_customization.py
 python setup03_create_custom_databases_for_tractors_N_and_ecowheataly.py
+python compute_inputs_and_lca.py    #check if brightway works
 cd ../ecowheataly
-./run 5  #run the ecowheataly model using 5 ranks
+./run 5  #run the ecowheataly model using 5 ranks (a different number of ranks can be used)
 ```
 ### In case of troubles
 
