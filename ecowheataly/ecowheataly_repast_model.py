@@ -1,7 +1,6 @@
-"""mpi4py dipende da un'implementazione di MPI
- (Message Passing Interface) per funzionare correttamente.
-  Su macOS, né Conda né Pip installano automaticamente MPI,
-   quindi dobbiamo farlo manualmente. Non usare conda che non funziona"""
+"""
+mpi4py depends on an MPI (Message Passing Interface) implementation to work correctly. On macOS, neither Conda nor Pip automatically install MPI, so we need to do it manually. Do not use Conda as it does not work.
+"""
 # installare brew o aggiornarlo:
 # !brew update
 # ! brew upgrade
