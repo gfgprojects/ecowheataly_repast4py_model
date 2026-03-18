@@ -4,8 +4,8 @@ import bw2data as bd
 
 @dataclass
 class AggregateData:
-    #: tital italian production
     production: int = 0
+    """total italian production"""
     hours_of_tractor_use: int=0
     nitrogen: int = 0
     herbicide: int = 0
