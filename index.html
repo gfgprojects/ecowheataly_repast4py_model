@@ -828,9 +828,25 @@
 <li><code>pandas</code></li>
 <li><code>brightway2</code> (for environmental impact calculations)</li>
 </ul>
-<p>Install dependencies:</p>
-<p>```bash
-pip install -r requirements.txt</p>
+<p>First of all, a working MPI implementation must be installed in computational setting.
+This is required by repast4py.</p>
+<p>Follow the instructions <a href="https://repast.github.io/repast4py.site/index.html">here</a> if you have not an MPI environment.</p>
+<p>Then proceed to the installation through the following commands:</p>
+<pre><code class="language-bash">git clone https://github.com/gfgprojects/ecowheataly_repast4py_model.git
+cd ecowheataly_repast4py_model
+python3 -m venv repast4py_venv        #optional: create an environment
+source repast4py_venv/bin/activate    #optional: activate the environment
+env CC=mpicxx CXX=mpicxx 
+pip install -r requirements.txt
+cd brightway
+python setup01_brightway2_database_and_methods.py
+python setup02_recipe_2016_ecowheataly_customization.py
+python setup03_create_custom_databases_for_tractors_N_and_ecowheataly.py
+</code></pre>
+<p>Install additional dependencies if needed:</p>
+<pre><code class="language-bash">pip install -r requirements1.txt
+</code></pre>
+<p>all dependencies are listed in requirements_all.txt</p>
 
 
 
