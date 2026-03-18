@@ -291,13 +291,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Requirements
+        Installation
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-case-of-troubles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In case of troubles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -716,13 +733,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Requirements
+        Installation
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-case-of-troubles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In case of troubles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -818,7 +852,7 @@
   └── utils.py
 </code></pre>
 <hr />
-<h2 id="requirements">Requirements</h2>
+<h2 id="installation">Installation</h2>
 <p>The model requires Python and several scientific and simulation libraries.</p>
 <p>Main dependencies include:</p>
 <ul>
@@ -828,25 +862,40 @@
 <li><code>pandas</code></li>
 <li><code>brightway2</code> (for environmental impact calculations)</li>
 </ul>
-<p>First of all, a working MPI implementation must be installed in computational setting.
+<p>A working MPI implementation must be installed in your computational setting.
 This is required by repast4py.</p>
-<p>Follow the instructions <a href="https://repast.github.io/repast4py.site/index.html">here</a> if you have not an MPI environment.</p>
-<p>Then proceed to the installation through the following commands:</p>
+<p>Follow the instructions in the <a href="https://repast.github.io/repast4py.site/index.html">Repast4py</a> web site if you have not an MPI environment installed.</p>
+<p>Then, proceed to the installation through the following commands:</p>
 <pre><code class="language-bash">git clone https://github.com/gfgprojects/ecowheataly_repast4py_model.git
 cd ecowheataly_repast4py_model
 python3 -m venv repast4py_venv        #optional: create an environment
 source repast4py_venv/bin/activate    #optional: activate the environment
-env CC=mpicxx CXX=mpicxx 
-pip install -r requirements.txt
+pip install mpi4py
+env CC=mpicxx CXX=mpicxx pip install repast4py
+</code></pre>
+<p>At this point, in case you get an error about missed python.h file install python development package.
+For example, in case of python 3.8 on Ubuntu Linux type</p>
+<pre><code class="language-bash">sudo apt install python3.8-dev
+</code></pre>
+<p>Then, continue the installation with the following commands</p>
+<pre><code class="language-bash">pip install -r requirements.txt
 cd brightway
 python setup01_brightway2_database_and_methods.py
 python setup02_recipe_2016_ecowheataly_customization.py
 python setup03_create_custom_databases_for_tractors_N_and_ecowheataly.py
+cd ../ecowheataly
+./run 5  #run the ecowheataly model using 5 ranks
 </code></pre>
+<h3 id="in-case-of-troubles">In case of troubles</h3>
 <p>Install additional dependencies if needed:</p>
 <pre><code class="language-bash">pip install -r requirements1.txt
 </code></pre>
 <p>all dependencies are listed in requirements_all.txt</p>
+<p>in case of troubles you can reinstall openmpi and mpi4py</p>
+<pre><code class="language-bash">sudo apt install libopenmpi-dev openmpi-bin
+pip uninstall mpi4py
+pip install mpi4py --no-cache-dir
+</code></pre>
 
 
 
