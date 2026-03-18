@@ -15,8 +15,11 @@ import bw2data as bd
 
 #characterization matrices and final demand vector for LCA (A and B matrix are defined in the Farm init)
 C_daly=np.array(lca_matrices.cDalyM)
+"""LCA characterization matrix for DALY"""
 C_species=np.array(lca_matrices.cSpeciesM)
+"""LCA characterization matrix for species"""
 f_vec=[0,0,1]
+"""LCA final demand vector"""
 
 
 class Farm(core.Agent):
@@ -133,7 +136,7 @@ class Farm(core.Agent):
         return residual
 
     def updateWheatPrice(self,tmpmodel):
-        """update wheat price"""
+        """The policy maker collects the last 12 wheat prices on the Italian market. This function retrieves the vector of prices from the policy maker ghost, makes the average, and update farmer's variable. The farmer will use this average price when decide production inputs."""
         if tmpmodel.runner.schedule.tick>0:
             tmp_policy_maker=tmpmodel.context.ghost_agent((0,1,0))
             self.p_w=round(sum(tmp_policy_maker.italianPricesHystory)/len(tmp_policy_maker.italianPricesHystory),2)
