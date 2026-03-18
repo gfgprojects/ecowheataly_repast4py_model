@@ -70,7 +70,7 @@ ecowheataly_repast4py_model
 
 ---
 
-## Requirements
+## Installation
 
 The model requires Python and several scientific and simulation libraries.
 
@@ -82,12 +82,12 @@ Main dependencies include:
 - `pandas`
 - `brightway2` (for environmental impact calculations)
 
-A working MPI implementation must be installed in computational setting.
+A working MPI implementation must be installed in your computational setting.
 This is required by repast4py.
 
-Follow the instructions [here](https://repast.github.io/repast4py.site/index.html) if you have not an MPI environment.
+Follow the instructions in the [Repast4py](https://repast.github.io/repast4py.site/index.html) web site if you have not an MPI environment installed.
 
-Then proceed to the installation through the following commands:
+Then, proceed to the installation through the following commands:
 
 ```bash
 git clone https://github.com/gfgprojects/ecowheataly_repast4py_model.git
@@ -102,7 +102,7 @@ For example, in case of python 3.8 on Ubuntu Linux type
 ```bash
 sudo apt install python3.8-dev
 ```
-Then, continue the installation with the following commnds
+Then, continue the installation with the following commands
 
 ```bash
 pip install -r requirements.txt
@@ -111,8 +111,9 @@ python setup01_brightway2_database_and_methods.py
 python setup02_recipe_2016_ecowheataly_customization.py
 python setup03_create_custom_databases_for_tractors_N_and_ecowheataly.py
 cd ../ecowheataly
-./run 5  #run the ecowheataly
+./run 5  #run the ecowheataly model using 5 ranks
 ```
+### In case of troubles
 
 Install additional dependencies if needed:
 ```bash
