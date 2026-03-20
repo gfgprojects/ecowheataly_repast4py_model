@@ -1,4 +1,10 @@
-"""Class for Farmers"""
+"""Farm agent module for the EcoWHEATaly model.
+
+Defines the Farm agent representing Italian wheat farms. Each farm
+optimizes production inputs (nitrogen, herbicide, insecticide),
+evaluates agri-environmental policy adoption, performs life cycle
+impact assessment, and harvests wheat yield subject to stochastic risk.
+"""
 import constants
 import params
 import lca_matrices
@@ -23,8 +29,32 @@ f_vec=[0,0,1]
 
 
 class Farm(core.Agent):
+    """Repast4py agent representing an Italian wheat farm.
+
+    Each farm decides production inputs by maximizing profit given a
+    Cobb-Douglas-like production function, optionally constrained by
+    agri-environmental policies (eco-schemes and SRA interventions).
+    After input decisions, the farm performs an LCA impact assessment
+    and harvests wheat yield drawn from a stochastic distribution.
+
+    Attributes:
+        TYPE: Agent type identifier used by repast4py context.
+    """
+
     TYPE = 0
     def __init__(self, local_id: int, rank: int,my_params,my_place_params):
+        """Initialize a Farm agent.
+
+        Args:
+            local_id: Unique identifier for the agent within this rank.
+            rank: MPI rank on which this agent resides.
+            my_params: Farm-specific parameters (province, altimetry,
+                acreage, gender, age) from input CSV.
+            my_place_params: Province-level parameters including yield
+                ceiling (``max_yield``), production risk, and production
+                function coefficients (``s1``, ``s2``, ``s3``,
+                ``lambda1``, ``lambda2``, ``lambda3``).
+        """
         super().__init__(id=local_id, type=Farm.TYPE, rank=rank)
         #print(my_params)
         #print(my_place_params)
@@ -128,6 +158,18 @@ class Farm(core.Agent):
         self.B=np.array(lca_matrices.biosphereM)
 
     def _foc_residual(self,y):
+        """Compute the first-order condition residual for profit maximization.
+
+        Evaluates the residual of the system of first-order conditions
+        at a given target yield. Used by ``scipy.optimize.root`` to
+        find the profit-maximizing yield level.
+
+        Args:
+            y: Candidate target yield (quintals per hectare).
+
+        Returns:
+            The residual value; zero at the optimal yield.
+        """
         total_cost=0
         for i in range(len(self.s_i)):
             tmp_cost=self.p_x_i[i]/(self.lambda_i[i]*(1+self.bar_s_i[i]-self.s_i[i])*self.bar_y-self.lambda_i[i]*y)
@@ -136,7 +178,16 @@ class Farm(core.Agent):
         return residual
 
     def updateWheatPrice(self,tmpmodel):
-        """The policy maker collects the last 12 wheat prices on the Italian market. This function retrieves the vector of prices from the policy maker ghost, makes the average, and update farmer's variable. The farmer will use this average price when decide production inputs."""
+        """Update the expected wheat price from the policy maker ghost.
+
+        Retrieves the last 12 Italian market wheat prices stored by
+        the policy maker ghost agent, computes their average, and
+        updates the farm's price variables used in input optimization.
+
+        Args:
+            tmpmodel: The simulation Model instance providing access
+                to the repast4py context and schedule.
+        """
         if tmpmodel.runner.schedule.tick>0:
             tmp_policy_maker=tmpmodel.context.ghost_agent((0,1,0))
             self.p_w=round(sum(tmp_policy_maker.italianPricesHystory)/len(tmp_policy_maker.italianPricesHystory),2)
@@ -144,6 +195,13 @@ class Farm(core.Agent):
             #self.p_w=constants.p_w
 
     def compute_unconstrained_production_inputs(self):
+        """Compute optimal production inputs without policy constraints.
+
+        Solves the first-order conditions to find the profit-maximizing
+        target yield and derives the corresponding input levels for
+        nitrogen, herbicide, and insecticide. Results are stored in
+        the ``unconstrained_*`` attributes.
+        """
         self.policy_unconstrained_inputs=[1,1,1]
         #self.pt+=repastrandom.default_rng.random()-0.5
         if params.verboseFlag: print("farm "+str(self.id)+" I am in rank "+str(self.rank)+" uid "+str(self.uid)+' inputs decision:')
@@ -198,6 +256,13 @@ class Farm(core.Agent):
         self.profit_per_ha=self.p_w_ql*self.hat_y-self.p_x_i[0]*self.unconstrained_Nitrogen_per_ha-self.p_x_i[1]*self.unconstrained_Herbicide_per_ha-self.p_x_i[2]*self.unconstrained_Insecticide_per_ha
 
     def compute_constrained_production_inputs(self):
+        """Compute production inputs under mandatory policy constraints.
+
+        For inputs flagged as mandatory by the adopted policy, uses the
+        constrained input levels to determine a feasible target yield.
+        The yield is set to the minimum across constrained inputs.
+        Results are stored in the ``constrained_*`` attributes.
+        """
         #self.pt+=repastrandom.default_rng.random()-0.5
         if params.verboseFlag: print("farm "+str(self.id)+" I am in rank "+str(self.rank)+" uid "+str(self.uid)+' inputs decision:')
         #tmp_sol=None
@@ -262,6 +327,14 @@ class Farm(core.Agent):
 
 
     def decide_production_inputs(self):
+        """Decide production inputs and compute final yield target.
+
+        Solves the profit-maximization problem to determine optimal
+        nitrogen, herbicide, and insecticide levels. Applies policy
+        multipliers to adjust inputs and yield if a policy is adopted.
+        Also computes tractor hours based on altimetry and profit per
+        hectare.
+        """
         #self.pt+=repastrandom.default_rng.random()-0.5
         if params.verboseFlag: print("farm "+str(self.id)+" I am in rank "+str(self.rank)+" uid "+str(self.uid)+' inputs decision:')
         self.policy_unconstrained_inputs=[1,1,1]
@@ -327,6 +400,18 @@ class Farm(core.Agent):
         self.profit_per_ha=self.p_w_ql*self.hat_y-self.p_x_i[0]*self.Nitrogen_per_ha-self.p_x_i[1]*self.Herbicide_per_ha-self.p_x_i[2]*self.Insecticide_per_ha
 
     def keep_or_change_policy(self,tmpmodel):
+        """Evaluate whether to adopt, keep, or abandon an agri-environmental policy.
+
+        Compares the net benefit of each available policy (payment
+        minus profit loss minus administrative costs) against the
+        current situation. Uses a logistic adoption probability to
+        decide whether to switch policy. If a policy is adopted,
+        computes the corresponding input multipliers.
+
+        Args:
+            tmpmodel: The simulation Model instance providing access
+                to the policy maker ghost agent.
+        """
         tmp_policy_maker=tmpmodel.context.ghost_agent((0,1,0))
         tmp_policies=tmp_policy_maker.policies
         self.policy_multiplier_hat_y=1
@@ -509,7 +594,14 @@ class Farm(core.Agent):
             #    print(self.policy_adopted)
 
     def perform_life_cyle_impact_assessment(self):
+        """Perform a simplified Life Cycle Impact Assessment for this farm.
 
+        Customizes the LCA technology (A) and biosphere (B) matrices
+        with the farm's actual input levels (tractor energy, nitrogen
+        fertilizer, herbicide, insecticide) and computes ReCiPe 2016
+        endpoint indicators for human health (DALY) and ecosystem
+        quality (species-year).
+        """
         #customize A and B matrices
         #hours_of_tractor_use = 12.5
         MJ=100/0.2779*self.hours_of_tractor_use_ha_after_policy
@@ -534,6 +626,13 @@ class Farm(core.Agent):
         #    print('Species: '+str(species_sum))
 
     def harvest(self):
+        """Simulate the wheat harvest with stochastic yield.
+
+        Draws the actual harvested yield from a normal distribution
+        centred on the policy-adjusted target yield, bounded by zero
+        and the target. Computes total production by multiplying
+        yield per hectare by wheat acreage.
+        """
         #s_1=self.s_i[0]
         #lambda_1=self.lambda_i[0]
         #x_1=self.Nitrogen_per_ha
@@ -552,6 +651,15 @@ class Farm(core.Agent):
 
 
     def add_to_aggregate_variables(self,aggregate_log: ut.AggregateData):
+        """Accumulate this farm's outputs into aggregate statistics.
+
+        Adds production, input usage, and policy adoption acreage to
+        the shared aggregate data log used for MPI reduction.
+
+        Args:
+            aggregate_log: Mutable data object collecting totals
+                across all farms in this rank.
+        """
         aggregate_log.production+=self.harvested_production
         aggregate_log.hours_of_tractor_use+=self.hours_of_tractor_use_ha_after_policy*self.wheat_acreage
         aggregate_log.nitrogen+=self.Nitrogen_per_ha_after_policy*self.wheat_acreage
@@ -567,6 +675,11 @@ class Farm(core.Agent):
             aggregate_log.sra19plus20+=self.wheat_acreage
 
     def save(self) -> Tuple:
+        """Serialize the agent state for MPI communication.
+
+        Returns:
+            The agent's unique identifier tuple ``(id, type, rank)``.
+        """
         return self.uid
 
 

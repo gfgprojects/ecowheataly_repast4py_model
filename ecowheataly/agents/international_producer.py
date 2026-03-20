@@ -1,12 +1,39 @@
+"""International producer agent module for the EcoWHEATaly model.
+
+Defines the InternationalProducer agent representing a world-region
+wheat producer (e.g., North America, Eastern Europe). Each producer
+manages its stock, performs monthly market sessions to find the
+equilibrium price, and harvests once per year.
+"""
 from repast4py import core
 from typing import Tuple
 import pandas as pd
 import numpy as np
 import params
 class InternationalProducer(core.Agent):
+    """Repast4py agent representing an international wheat producer.
+
+    Each producer holds a wheat stock that decreases with monthly
+    sales and increases at harvest. During market sessions, it
+    aggregates demand from all buyers and finds the equilibrium
+    price where aggregate demand equals available supply.
+
+    Attributes:
+        TYPE: Agent type identifier used by repast4py context.
+    """
 #    global verboseFlag
     TYPE = 3
     def __init__(self, local_id: int, rank: int,my_params,initial_price):
+        """Initialize an InternationalProducer agent.
+
+        Args:
+            local_id: Unique identifier for the agent within this rank.
+            rank: MPI rank on which this agent resides.
+            my_params: Producer parameters including area name,
+                coordinates, gather month, and annual production.
+            initial_price: Starting average price used to build the
+                aggregate demand schedule price grid.
+        """
         super().__init__(id=local_id, type=InternationalProducer.TYPE, rank=rank)
         self.rank=rank
         self.area_name=my_params['Area']
@@ -30,18 +57,41 @@ class InternationalProducer(core.Agent):
 
         if params.verboseFlag: print("hello from international producer "+str(self.uid)+" I am in rank "+str(rank)+' '+self.area_name,'latitude',str(self.latitude),'longitude',str(self.longitude),'gather month',str(self.gatherMonth),'production',str(self.production),'stock',self.stock)
 
-    #used by Italy to overwrite FAOSTAT production
     def updateStockAtInitialization(self):
+        """Recalculate initial stock based on production and gather month.
+
+        Used by Italy to overwrite the default FAOSTAT-based stock
+        after the model replaces Italian production with simulated
+        farm output.
+        """
         self.stock=round((self.production/12)*(self.gatherMonth-1))
         if self.stock==0: self.stock=self.production
         if params.verboseFlag: print("hello from international producer "+str(self.uid)+" I am in rank "+str(self.rank)+' '+self.area_name,'latitude',str(self.latitude),'longitude',str(self.longitude),'gather month',str(self.gatherMonth),'production',str(self.production),'stock',self.stock)
 
     def updateStock(self,delta):
+        """Apply a proportional change to stock and production.
+
+        Args:
+            delta: Fractional change to apply (e.g., -0.05 for a
+                5% reduction).
+        """
         self.stock=(1+delta)*self.stock
         self.production=(1+delta)*self.production
 
 
     def performMarketSession(self,tmpcontext):
+        """Perform a monthly market session and find the equilibrium price.
+
+        Collects linear demand functions from all international buyers,
+        aggregates them into a demand schedule, and finds the price at
+        which aggregate demand equals available monthly supply. Computes
+        exchanged quantities per buyer and updates the stock. For Italy,
+        also updates the policy maker's price history.
+
+        Args:
+            tmpcontext: The simulation Model instance providing access
+                to the repast4py context and schedule.
+        """
         #print()
         if params.verboseFlag: print('=========',self.area_name,'=========')
         current_month=tmpcontext.runner.schedule.tick%12+1
@@ -132,6 +182,15 @@ class InternationalProducer(core.Agent):
 
 
     def harvestIfgatherMonth(self,tmpcontext):
+        """Add annual production to stock if the current month is the gather month.
+
+        Italy is excluded because its production is managed separately
+        by the Italian farm sub-model.
+
+        Args:
+            tmpcontext: The simulation Model instance providing access
+                to the schedule tick.
+        """
         #print()
         #print('=========',self.area_name,'=========')
         #print('supply',round(self.production/12))
@@ -141,7 +200,14 @@ class InternationalProducer(core.Agent):
             self.stock+=self.production
 
     def save(self) -> Tuple:
+        """Serialize the agent state for MPI communication.
+
+        Returns:
+            The agent's unique identifier tuple ``(id, type, rank)``.
+        """
         return self.uid
+
     def print_status(self):
+        """Print a short status message identifying this agent."""
         return print("I am an international producer")
  

@@ -1,12 +1,40 @@
+"""International buyer agent module for the EcoWHEATaly model.
+
+Defines the InternationalBuyer agent representing a world-region
+wheat buyer (e.g., North Africa, Central Asia). Each buyer maintains
+per-producer demand functions and evolves its buying strategy by
+shifting demand from expensive to cheap producers over time.
+"""
 from repast4py import core
 from typing import Tuple
 import params
 import pandas as pd
 import math
 class InternationalBuyer(core.Agent):
+    """Repast4py agent representing an international wheat buyer.
+
+    Each buyer is associated with a geographic area that has its own
+    domestic demand and production. It maintains linear demand
+    functions toward each international producer and adjusts them
+    based on observed price differentials and transport costs.
+
+    Attributes:
+        TYPE: Agent type identifier used by repast4py context.
+    """
 #    global verboseFlag
     TYPE = 2
     def __init__(self, local_id: int, rank: int,my_params,producers_list,transport_info):
+        """Initialize an InternationalBuyer agent.
+
+        Args:
+            local_id: Unique identifier for the agent within this rank.
+            rank: MPI rank on which this agent resides.
+            my_params: Buyer parameters including area name,
+                coordinates, and domestic demand from input CSV.
+            producers_list: List of international producer area names.
+            transport_info: DataFrame with transport mode and distance
+                from this buyer to each producer.
+        """
         super().__init__(id=local_id, type=InternationalBuyer.TYPE, rank=rank)
         self.rank=rank
         self.area_name=my_params['Area']
@@ -29,6 +57,18 @@ class InternationalBuyer(core.Agent):
         if params.verboseFlag: print("hello from international buyer "+str(self.uid)+" I am in rank "+str(rank)+' '+self.area_name,'latitude',str(self.latitude),'longitude',str(self.longitude),'demand',str(self.domestic_demand))
 
     def initializeBuyingStrategy(self, int_availability_status):
+        """Initialize demand functions toward each international producer.
+
+        Builds per-producer linear demand functions characterized by a
+        quantity at the average price, a higher-demand quantity, and an
+        elasticity. Allocates import demand across producers based on
+        their export market shares. Also prepares the bought-quantities
+        tracking structure with transport cost information.
+
+        Args:
+            int_availability_status: DataFrame summarizing each
+                producer's output, export openness, and market share.
+        """
         #In this function the demand functions of a buyer directed to the various producers are initialized.
         #they are organized as a pandas data frame where each row is a producer. 
         #for each producers, the demand function is characterized by two quantities and an elasticity. 
@@ -118,6 +158,12 @@ class InternationalBuyer(core.Agent):
         #print(self.transport_info)
 
     def update_transport_costs(self,delta_tc):
+        """Update transport cost coefficients and recalculate per-producer costs.
+
+        Args:
+            delta_tc: Increment to add to both sea and land transport
+                cost coefficients (per ton per km).
+        """
         self.transport_cost_per_ton_per_km_by_sea+=delta_tc
         self.transport_cost_per_ton_per_km_by_land+=delta_tc
         for idx in self.bought_quantities.index:
@@ -127,8 +173,29 @@ class InternationalBuyer(core.Agent):
                 self.bought_quantities.loc[idx,'transport_cost']=round(int(self.bought_quantities.loc[idx,'distance_km'])*self.transport_cost_per_ton_per_km_by_land,2)
  
     def answerDemandQueryFromProducer(self,prodName):
+        """Return this buyer's demand function parameters for a producer.
+
+        Args:
+            prodName: Area name of the querying producer.
+
+        Returns:
+            A pandas Series with demand at average price, higher
+            demand, and demand elasticity for the given producer.
+        """
         return self.demand_function.loc[prodName]
     def checkObtainedQuantitiesAndEvolveBuyingStrategy(self,tmpcontext):
+        """Update buying strategy based on latest market outcomes.
+
+        Records the equilibrium prices and exchanged quantities from
+        each producer, then shifts demand from expensive to cheap
+        producers using a logistic function of the price range.
+        Applies optional simulated annealing to reduce the magnitude
+        of demand shifts over time.
+
+        Args:
+            tmpcontext: The simulation Model instance providing access
+                to the repast4py context.
+        """
         int_producers=tmpcontext.context.agents(agent_type=3)
         for tmpprod in int_producers:
             self.bought_quantities.loc[tmpprod.area_name,'price']=tmpprod.equilibrium_price
@@ -228,17 +295,47 @@ class InternationalBuyer(core.Agent):
         #print(self.bought_quantities)
         #if params.verboseFlag: 
     def switchAnnealingOn(self):
+        """Enable simulated annealing on demand reallocation."""
         self.annealing=True
+
     def switchAnnealingOff(self):
+        """Disable simulated annealing on demand reallocation."""
         self.annealing=False
+
     def resetPercentageToMove(self,percentage):
+        """Set the percentage of demand to shift between producers.
+
+        Args:
+            percentage: New demand-movement fraction (0 to 1).
+        """
         self.percentage_of_demand_to_move_from_expensive_to_cheap_producer=percentage
+
     def resetAnnealingSpeed(self,speed):
+        """Set the annealing speed for demand reallocation decay.
+
+        Args:
+            speed: New annealing speed coefficient.
+        """
         self.annealing_speed=speed
+
     def resetDemandElasticity(self,new_elasticity):
+        """Set the demand elasticity for all producer demand functions.
+
+        Args:
+            new_elasticity: New elasticity value applied to all
+                demand functions.
+        """
         self.demand_elasticity=new_elasticity
+
     def save(self) -> Tuple:
+        """Serialize the agent state for MPI communication.
+
+        Returns:
+            The agent's unique identifier tuple ``(id, type, rank)``.
+        """
         return self.uid
+
     def print_status(self):
+        """Print a short status message identifying this agent."""
         return print(str(self.area_name),'I am an international buyer')
  

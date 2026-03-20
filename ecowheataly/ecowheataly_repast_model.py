@@ -1,5 +1,14 @@
-"""
-mpi4py depends on an MPI (Message Passing Interface) implementation to work correctly. On macOS, neither Conda nor Pip automatically install MPI, so we need to do it manually. Do not use Conda as it does not work.
+"""EcoWHEATaly repast4py simulation model.
+
+Main module orchestrating the agent-based model of Italian wheat
+production and international wheat markets. Initializes MPI
+communication, creates all agents (farms, policy maker,
+international buyers and producers), schedules recurring events,
+and runs the simulation loop.
+
+Note:
+    mpi4py depends on an MPI implementation. On macOS, install
+    OpenMPI via Homebrew (not Conda).
 """
 # installare brew o aggiornarlo:
 # !brew update
@@ -50,6 +59,17 @@ international_producers_summary=None
 
 
 def restore_agent(agent_data: Tuple):
+    """Deserialize an agent from its saved state tuple.
+
+    Called by repast4py during MPI synchronization to reconstruct
+    agents (or their ghosts) on remote ranks.
+
+    Args:
+        agent_data: Tuple produced by an agent's ``save()`` method.
+
+    Returns:
+        A newly constructed agent instance of the appropriate type.
+    """
     uid=agent_data[0]
     match uid[1]:
         case agfarm.Farm.TYPE:
@@ -61,9 +81,27 @@ def restore_agent(agent_data: Tuple):
     return tmp
 
 class Model:
-    """Repast4py model"""
+    """EcoWHEATaly repast4py simulation model.
+
+    Coordinates all agents and scheduled events. On rank 0, manages
+    international buyers and producers. On ranks > 0, manages Italian
+    farms. The policy maker lives on rank 0 and is ghosted to other
+    ranks for price and policy information sharing.
+    """
+
 #    def __init__(self, comm: MPI.Intracomm, params: Dict):
     def __init__(self, comm: MPI.Intracomm):
+        """Initialize the simulation model.
+
+        Sets up the schedule, creates the repast4py context, reads
+        input data, creates all agents (policy maker, international
+        buyers, international producers, Italian farms), configures
+        ghost agents for cross-rank communication, and initializes
+        logging.
+
+        Args:
+            comm: MPI communicator for parallel execution.
+        """
         # create the schedule
         self.runner = schedule.init_schedule_runner(comm)
         #self.runner.schedule_repeating_event(1, 1, self.step,priority_type=schedule.PriorityType.BY_PRIORITY,priority=1)
@@ -505,11 +543,13 @@ class Model:
         self.computeLCAindicators()
 
     def buyersInitializeBuyingStrategy(self):
+        """Initialize buying strategies for all international buyers."""
         international_buyers=list(self.context.agents(agent_type=2))
         for tmpbuy in international_buyers:
             tmpbuy.initializeBuyingStrategy(international_producers_summary)
 
     def policyMakerUpdatePolicy(self):
+        """Reset all policy payments to zero and synchronize across ranks."""
         if rank==0:
             tmp_policy_maker=self.context.agent((0,1,0))
             tmp_policy_maker.policies.loc['eco4','payment/ha']=0
@@ -519,6 +559,12 @@ class Model:
         self.context.synchronize(restore_agent)
 
     def performInternationalMarketsSessions(self):
+        """Run market sessions for all international producers on rank 0.
+
+        Each producer finds its equilibrium price and exchanged
+        quantities. Ghost agents are synchronized afterwards to
+        propagate updated prices to farm ranks.
+        """
         if rank==0:
             if params.verboseFlag: 
                 print('=================================')
@@ -531,6 +577,7 @@ class Model:
         self.context.synchronize(restore_agent)
 
     def producersHarvestIfgatherMonth(self):
+        """Trigger harvest for international producers if it is their gather month."""
         if rank==0:
             if params.verboseFlag: 
                 print('=================================')
@@ -541,40 +588,49 @@ class Model:
                 tmpprod.harvestIfgatherMonth(self)
 
     def buyersCheckObtainedQuantitiesAndEvolveBuyingStrategy(self):
+        """Update all buyers' demand strategies after a market session."""
         if rank==0:
             international_buyers=list(self.context.agents(agent_type=2))
             for tmpbuy in international_buyers:
                 tmpbuy.checkObtainedQuantitiesAndEvolveBuyingStrategy(self)
+
     def switchOnInternationalBuyersAnnealing(self):
+        """Enable simulated annealing for all international buyers."""
         if rank==0:
             international_buyers=list(self.context.agents(agent_type=2))
             for tmpbuy in international_buyers:
                 tmpbuy.switchAnnealingOn()
+
     def resetInternationalBuyersPercentageToMove(self):
+        """Reset the demand-movement percentage for all buyers to 0.01."""
         if rank==0:
             international_buyers=list(self.context.agents(agent_type=2))
             for tmpbuy in international_buyers:
                 tmpbuy.resetPercentageToMove(0.01)
 
     def resetInternationalBuyersAnnealingSpeed(self):
+        """Reset the annealing speed for all buyers to 0.15."""
         if rank==0:
             international_buyers=list(self.context.agents(agent_type=2))
             for tmpbuy in international_buyers:
                 tmpbuy.resetAnnealingSpeed(0.15)
 
     def resetInternationalBuyersDemandElasticity(self):
+        """Reset the demand elasticity for all buyers to 2.0."""
         if rank==0:
             international_buyers=list(self.context.agents(agent_type=2))
             for tmpbuy in international_buyers:
                 tmpbuy.resetDemandElasticity(2.0)
 
     def switchOffInternationalBuyersAnnealing(self):
+        """Disable simulated annealing for all international buyers."""
         if rank==0:
             international_buyers=list(self.context.agents(agent_type=2))
             for tmpbuy in international_buyers:
                 tmpbuy.switchAnnealingOff()
 
     def updateInternationalBuyersTransportCosts(self):
+        """Increment transport costs for all international buyers."""
         if rank==0:
             international_buyers=list(self.context.agents(agent_type=2))
             for tmpbuy in international_buyers:
@@ -584,12 +640,14 @@ class Model:
             #print(tmpbuy.transport_cost_per_ton_per_km_by_sea)
             #print(tmpbuy.percentage_of_demand_to_move_from_expensive_to_cheap_producer)
     def updateInternationalBuyersDemandToMovePercentage(self):
+        """Set the demand-movement percentage for all buyers to 0.01."""
         if rank==0:
             international_buyers=list(self.context.agents(agent_type=2))
             for tmpbuy in international_buyers:
                 tmpbuy.percentage_of_demand_to_move_from_expensive_to_cheap_producer=0.01
  
     def updateInternationalProducerStock(self):
+        """Apply exogenous stock shocks to specific international producers."""
         if rank==0:
             international_producers=list(self.context.agents(agent_type=3))
             for tmpprod in international_producers:
@@ -598,6 +656,7 @@ class Model:
         
 
     def interacting_with_ghosts(self):
+        """Test ghost agent interaction across ranks (debug utility)."""
         print("INTERACTION")
         if rank == 0:
             tmp=self.context.agent((0,1,0))
@@ -609,6 +668,12 @@ class Model:
         print("end_interaction")
 
     def performItalianProductionSystemModel(self):
+        """Run the Italian farm production cycle on ranks > 0.
+
+        For each farm: updates the wheat price from the policy maker
+        ghost, decides production inputs, performs LCA impact
+        assessment, and harvests.
+        """
         if rank>0:
             if params.verboseFlag: print('tick',self.runner.schedule.tick,'rank',rank,'performItalianProductionSystemModel')
             for farm in self.context.agents(agent_type=0):
@@ -618,11 +683,13 @@ class Model:
                 farm.harvest()
 
     def updatePolicies(self):
+        """Let each farm evaluate and potentially change its adopted policy."""
         if rank>0:
             for farmer in self.context.agents(agent_type=0):
                 farmer.keep_or_change_policy(self)
 
     def recordFarmsData(self):
+        """Log detailed per-farm data to the tabular CSV logger."""
         tick = self.runner.schedule.tick
         if rank>0:
             if params.verboseFlag: print('tick',self.runner.schedule.tick,'rank',rank,'recordFarmsData')
@@ -632,6 +699,13 @@ class Model:
 
 
     def computeItalianProduction(self):
+        """Aggregate farm-level data and compute total Italian production.
+
+        Each farm on ranks > 0 contributes to aggregate variables.
+        An MPI reduction sums production, input usage, and policy
+        acreage across all ranks. Results are stored for use by
+        ``updateItalianProductionAndStock``.
+        """
         tick = self.runner.schedule.tick
         if rank>0:
             if params.verboseFlag: print('tick',self.runner.schedule.tick,'rank',rank,'computeItalianProduction')
@@ -676,6 +750,12 @@ class Model:
         self.aggregate_data_log.sra19plus20 = 0
 
     def updateItalianProductionAndStock(self):
+        """Update the Italian international producer with simulated output.
+
+        Before the switch-on tick, uses a fixed FAOSTAT-based
+        production value. After that, uses the aggregated durum
+        wheat production computed from the farm sub-model.
+        """
         if rank==0:
             if self.runner.schedule.tick<self.switchOnItalianProduction:
                 italianProductionDurumAndSoft=2*3253936
@@ -698,6 +778,14 @@ class Model:
 
 
     def computeLCAindicators(self):
+        """Compute aggregate LCA endpoint indicators using Brightway2.
+
+        On rank 0, updates the EcoWHEATaly Brightway2 database with
+        aggregate Italian input quantities (tractor energy, nitrogen,
+        herbicide, insecticide), runs the LCA calculation for ReCiPe
+        2016 endpoint categories, and writes DALY and species-year
+        scores to the output CSV.
+        """
         recipe=[m for m in bd.methods if 'ReCiPe 2016' in str(m) and '20180117' in str(m)]
         recipe_ecow_end=[m for m in recipe if 'ecowheataly' in str(m) and 'Endpoint' in str(m)]
         #load ecowheataly database
@@ -793,10 +881,13 @@ class Model:
                 file.flush()
                  
     def step(self):
+        """Execute one simulation step for all farms (legacy scheduler hook)."""
         for farm in self.context.agents(agent_type=0):
             farm.decide_production_inputs()
             farm.harvest()
+
     def log_international_data(self):
+        """Write international prices, stocks, and sold quantities to CSV files."""
         if(rank==0):
             international_producers=list(self.context.agents(agent_type=3))
             producers_names=[]
@@ -825,6 +916,7 @@ class Model:
                 file.flush()
 
     def log_agents(self):
+        """Log per-farm data and aggregate statistics (legacy logger)."""
         tick = self.runner.schedule.tick
         for farmer in self.context.agents(agent_type=0):
             #add a line to write in the farmers log file 
@@ -840,6 +932,7 @@ class Model:
         self.aggregate_data_log.production = 0
 
     def start(self):
+        """Start the simulation by executing the scheduled event loop."""
         if params.verboseFlag:
             print("hello, I am going to run the start function")
         self.runner.execute()
@@ -853,6 +946,7 @@ class Model:
 
 
 def run():
+    """Entry point: create the model and start the simulation."""
     model = Model(MPI.COMM_WORLD)
     model.start()
 
