@@ -464,6 +464,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="PolicyMaker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agents.policy_maker.PolicyMaker.updateItalianPricesHystory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateItalianPricesHystory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.policy_maker.PolicyMaker.save" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        save
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.policy_maker.PolicyMaker.update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.policy_maker.PolicyMaker.print_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        print_status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -683,6 +733,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="PolicyMaker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agents.policy_maker.PolicyMaker.updateItalianPricesHystory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateItalianPricesHystory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.policy_maker.PolicyMaker.save" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        save
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.policy_maker.PolicyMaker.update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.policy_maker.PolicyMaker.print_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        print_status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -721,6 +821,11 @@
 
     <div class="doc doc-contents first">
 
+        <p>Policy maker agent module for the EcoWHEATaly model.</p>
+<p>Defines the PolicyMaker agent that tracks Italian wheat market
+prices and manages the set of agri-environmental policies available
+to farms (eco-schemes and SRA interventions).</p>
+
 
 
 
@@ -757,6 +862,37 @@
 
 
 
+        <p>Repast4py agent representing the Italian policy maker.</p>
+<p>The policy maker maintains a rolling history of Italian wheat
+prices and holds the DataFrame of available agri-environmental
+policies with their parameters (payments, input effects,
+administrative costs). It is shared across MPI ranks via the
+ghost agent mechanism.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="agents.policy_maker.PolicyMaker.TYPE">TYPE</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Agent type identifier used by repast4py context.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 
 
@@ -777,6 +913,188 @@
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.policy_maker.PolicyMaker.updateItalianPricesHystory" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateItalianPricesHystory</span><span class="p">(</span><span class="n">latestPrice</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Append the latest wheat price and keep the last 12 entries.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>latestPrice</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Most recent Italian wheat equilibrium price.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.policy_maker.PolicyMaker.save" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Serialize the agent state for MPI communication.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Tuple">Tuple</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A tuple of <code>(uid, italianPricesHystory, policies)</code></p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Tuple">Tuple</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>used by <code>restore_agent</code> to reconstruct the agent.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.policy_maker.PolicyMaker.update" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">update</span><span class="p">(</span><span class="n">italian_ph</span><span class="p">,</span> <span class="n">italian_policies</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Update the ghost agent state without full reconstruction.</p>
+<p>Called during MPI synchronization to refresh the ghost copy
+of this agent on remote ranks.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>italian_ph</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Updated list of Italian wheat prices.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>italian_policies</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Updated policies DataFrame.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.policy_maker.PolicyMaker.print_status" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">print_status</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Print a short status message identifying this agent.</p>
+
+
+    </div>
+
+</div>
 
 
 

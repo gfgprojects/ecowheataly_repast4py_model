@@ -483,6 +483,94 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.compute_unconstrained_production_inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        compute_unconstrained_production_inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.compute_constrained_production_inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        compute_constrained_production_inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.decide_production_inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        decide_production_inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.keep_or_change_policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        keep_or_change_policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.perform_life_cyle_impact_assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        perform_life_cyle_impact_assessment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.harvest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        harvest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.add_to_aggregate_variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_to_aggregate_variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.save" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        save
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -780,6 +868,94 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.compute_unconstrained_production_inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        compute_unconstrained_production_inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.compute_constrained_production_inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        compute_constrained_production_inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.decide_production_inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        decide_production_inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.keep_or_change_policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        keep_or_change_policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.perform_life_cyle_impact_assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        perform_life_cyle_impact_assessment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.harvest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        harvest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.add_to_aggregate_variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_to_aggregate_variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.farm.Farm.save" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        save
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -821,7 +997,11 @@
 
     <div class="doc doc-contents first">
 
-        <p>Class for Farmers</p>
+        <p>Farm agent module for the EcoWHEATaly model.</p>
+<p>Defines the Farm agent representing Italian wheat farms. Each farm
+optimizes production inputs (nitrogen, herbicide, insecticide),
+evaluates agri-environmental policy adoption, performs life cycle
+impact assessment, and harvests wheat yield subject to stochastic risk.</p>
 
 
 
@@ -925,6 +1105,37 @@
 
 
 
+        <p>Repast4py agent representing an Italian wheat farm.</p>
+<p>Each farm decides production inputs by maximizing profit given a
+Cobb-Douglas-like production function, optionally constrained by
+agri-environmental policies (eco-schemes and SRA interventions).
+After input decisions, the farm performs an LCA impact assessment
+and harvests wheat yield drawn from a stochastic distribution.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="agents.farm.Farm.TYPE">TYPE</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Agent type identifier used by repast4py context.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 
 
@@ -957,7 +1168,305 @@
 
     <div class="doc doc-contents ">
 
-        <p>The policy maker collects the last 12 wheat prices on the Italian market. This function retrieves the vector of prices from the policy maker ghost, makes the average, and update farmer's variable. The farmer will use this average price when decide production inputs.</p>
+        <p>Update the expected wheat price from the policy maker ghost.</p>
+<p>Retrieves the last 12 Italian market wheat prices stored by
+the policy maker ghost agent, computes their average, and
+updates the farm's price variables used in input optimization.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tmpmodel</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The simulation Model instance providing access
+to the repast4py context and schedule.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.compute_unconstrained_production_inputs" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">compute_unconstrained_production_inputs</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compute optimal production inputs without policy constraints.</p>
+<p>Solves the first-order conditions to find the profit-maximizing
+target yield and derives the corresponding input levels for
+nitrogen, herbicide, and insecticide. Results are stored in
+the <code>unconstrained_*</code> attributes.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.compute_constrained_production_inputs" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">compute_constrained_production_inputs</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compute production inputs under mandatory policy constraints.</p>
+<p>For inputs flagged as mandatory by the adopted policy, uses the
+constrained input levels to determine a feasible target yield.
+The yield is set to the minimum across constrained inputs.
+Results are stored in the <code>constrained_*</code> attributes.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.decide_production_inputs" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">decide_production_inputs</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Decide production inputs and compute final yield target.</p>
+<p>Solves the profit-maximization problem to determine optimal
+nitrogen, herbicide, and insecticide levels. Applies policy
+multipliers to adjust inputs and yield if a policy is adopted.
+Also computes tractor hours based on altimetry and profit per
+hectare.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.keep_or_change_policy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">keep_or_change_policy</span><span class="p">(</span><span class="n">tmpmodel</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Evaluate whether to adopt, keep, or abandon an agri-environmental policy.</p>
+<p>Compares the net benefit of each available policy (payment
+minus profit loss minus administrative costs) against the
+current situation. Uses a logistic adoption probability to
+decide whether to switch policy. If a policy is adopted,
+computes the corresponding input multipliers.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tmpmodel</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The simulation Model instance providing access
+to the policy maker ghost agent.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.perform_life_cyle_impact_assessment" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">perform_life_cyle_impact_assessment</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Perform a simplified Life Cycle Impact Assessment for this farm.</p>
+<p>Customizes the LCA technology (A) and biosphere (B) matrices
+with the farm's actual input levels (tractor energy, nitrogen
+fertilizer, herbicide, insecticide) and computes ReCiPe 2016
+endpoint indicators for human health (DALY) and ecosystem
+quality (species-year).</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.harvest" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">harvest</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Simulate the wheat harvest with stochastic yield.</p>
+<p>Draws the actual harvested yield from a normal distribution
+centred on the policy-adjusted target yield, bounded by zero
+and the target. Computes total production by multiplying
+yield per hectare by wheat acreage.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.add_to_aggregate_variables" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">add_to_aggregate_variables</span><span class="p">(</span><span class="n">aggregate_log</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Accumulate this farm's outputs into aggregate statistics.</p>
+<p>Adds production, input usage, and policy adoption acreage to
+the shared aggregate data log used for MPI reduction.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>aggregate_log</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="AggregateData
+
+
+  
+      dataclass
+   (utils.utils.AggregateData)" href="../../#utils.utils.AggregateData">AggregateData</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Mutable data object collecting totals
+across all farms in this rank.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.save" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Serialize the agent state for MPI communication.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Tuple">Tuple</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The agent's unique identifier tuple <code>(id, type, rank)</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>

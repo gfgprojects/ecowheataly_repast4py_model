@@ -520,6 +520,78 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="InternationalProducer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agents.international_producer.InternationalProducer.updateStockAtInitialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateStockAtInitialization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.international_producer.InternationalProducer.updateStock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateStock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.international_producer.InternationalProducer.performMarketSession" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        performMarketSession
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.international_producer.InternationalProducer.harvestIfgatherMonth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        harvestIfgatherMonth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.international_producer.InternationalProducer.save" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        save
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.international_producer.InternationalProducer.print_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        print_status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -683,6 +755,78 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="InternationalProducer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agents.international_producer.InternationalProducer.updateStockAtInitialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateStockAtInitialization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.international_producer.InternationalProducer.updateStock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        updateStock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.international_producer.InternationalProducer.performMarketSession" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        performMarketSession
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.international_producer.InternationalProducer.harvestIfgatherMonth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        harvestIfgatherMonth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.international_producer.InternationalProducer.save" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        save
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents.international_producer.InternationalProducer.print_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        print_status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -721,6 +865,12 @@
 
     <div class="doc doc-contents first">
 
+        <p>International producer agent module for the EcoWHEATaly model.</p>
+<p>Defines the InternationalProducer agent representing a world-region
+wheat producer (e.g., North America, Eastern Europe). Each producer
+manages its stock, performs monthly market sessions to find the
+equilibrium price, and harvests once per year.</p>
+
 
 
 
@@ -757,6 +907,36 @@
 
 
 
+        <p>Repast4py agent representing an international wheat producer.</p>
+<p>Each producer holds a wheat stock that decreases with monthly
+sales and increases at harvest. During market sessions, it
+aggregates demand from all buyers and finds the equilibrium
+price where aggregate demand equals available supply.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="agents.international_producer.InternationalProducer.TYPE">TYPE</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Agent type identifier used by repast4py context.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 
 
@@ -777,6 +957,240 @@
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_producer.InternationalProducer.updateStockAtInitialization" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateStockAtInitialization</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Recalculate initial stock based on production and gather month.</p>
+<p>Used by Italy to overwrite the default FAOSTAT-based stock
+after the model replaces Italian production with simulated
+farm output.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_producer.InternationalProducer.updateStock" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateStock</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Apply a proportional change to stock and production.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>delta</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Fractional change to apply (e.g., -0.05 for a
+5% reduction).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_producer.InternationalProducer.performMarketSession" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">performMarketSession</span><span class="p">(</span><span class="n">tmpcontext</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Perform a monthly market session and find the equilibrium price.</p>
+<p>Collects linear demand functions from all international buyers,
+aggregates them into a demand schedule, and finds the price at
+which aggregate demand equals available monthly supply. Computes
+exchanged quantities per buyer and updates the stock. For Italy,
+also updates the policy maker's price history.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tmpcontext</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The simulation Model instance providing access
+to the repast4py context and schedule.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_producer.InternationalProducer.harvestIfgatherMonth" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">harvestIfgatherMonth</span><span class="p">(</span><span class="n">tmpcontext</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Add annual production to stock if the current month is the gather month.</p>
+<p>Italy is excluded because its production is managed separately
+by the Italian farm sub-model.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tmpcontext</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The simulation Model instance providing access
+to the schedule tick.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_producer.InternationalProducer.save" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Serialize the agent state for MPI communication.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Tuple">Tuple</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The agent's unique identifier tuple <code>(id, type, rank)</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_producer.InternationalProducer.print_status" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">print_status</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Print a short status message identifying this agent.</p>
+
+
+    </div>
+
+</div>
 
 
 

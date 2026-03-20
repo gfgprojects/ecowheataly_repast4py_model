@@ -614,8 +614,19 @@
 
     <div class="doc doc-contents first">
 
-        <p>mpi4py depends on an MPI (Message Passing Interface) implementation to work correctly. On macOS, neither Conda nor Pip automatically install MPI, so we need to do it manually. Do not use Conda as it does not work.</p>
+        <p>EcoWHEATaly repast4py simulation model.</p>
+<p>Main module orchestrating the agent-based model of Italian wheat
+production and international wheat markets. Initializes MPI
+communication, creates all agents (farms, policy maker,
+international buyers and producers), schedules recurring events,
+and runs the simulation loop.</p>
 
+
+<details class="note" open>
+  <summary>Note</summary>
+  <p>mpi4py depends on an MPI implementation. On macOS, install
+OpenMPI via Homebrew (not Conda).</p>
+</details>
 
 
 
@@ -730,7 +741,11 @@
 
 
 
-        <p>Repast4py model</p>
+        <p>EcoWHEATaly repast4py simulation model.</p>
+<p>Coordinates all agents and scheduled events. On rank 0, manages
+international buyers and producers. On ranks &gt; 0, manages Italian
+farms. The policy maker lives on rank 0 and is ghosted to other
+ranks for price and policy information sharing.</p>
 
 
 
@@ -753,6 +768,456 @@
 
 
 
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.buyersInitializeBuyingStrategy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">buyersInitializeBuyingStrategy</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Initialize buying strategies for all international buyers.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.policyMakerUpdatePolicy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">policyMakerUpdatePolicy</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Reset all policy payments to zero and synchronize across ranks.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.performInternationalMarketsSessions" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">performInternationalMarketsSessions</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Run market sessions for all international producers on rank 0.</p>
+<p>Each producer finds its equilibrium price and exchanged
+quantities. Ghost agents are synchronized afterwards to
+propagate updated prices to farm ranks.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.producersHarvestIfgatherMonth" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">producersHarvestIfgatherMonth</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Trigger harvest for international producers if it is their gather month.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.buyersCheckObtainedQuantitiesAndEvolveBuyingStrategy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">buyersCheckObtainedQuantitiesAndEvolveBuyingStrategy</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Update all buyers' demand strategies after a market session.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.switchOnInternationalBuyersAnnealing" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">switchOnInternationalBuyersAnnealing</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enable simulated annealing for all international buyers.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.resetInternationalBuyersPercentageToMove" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">resetInternationalBuyersPercentageToMove</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Reset the demand-movement percentage for all buyers to 0.01.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.resetInternationalBuyersAnnealingSpeed" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">resetInternationalBuyersAnnealingSpeed</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Reset the annealing speed for all buyers to 0.15.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.resetInternationalBuyersDemandElasticity" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">resetInternationalBuyersDemandElasticity</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Reset the demand elasticity for all buyers to 2.0.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.switchOffInternationalBuyersAnnealing" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">switchOffInternationalBuyersAnnealing</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Disable simulated annealing for all international buyers.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.updateInternationalBuyersTransportCosts" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateInternationalBuyersTransportCosts</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Increment transport costs for all international buyers.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.updateInternationalBuyersDemandToMovePercentage" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateInternationalBuyersDemandToMovePercentage</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Set the demand-movement percentage for all buyers to 0.01.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.updateInternationalProducerStock" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateInternationalProducerStock</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Apply exogenous stock shocks to specific international producers.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.interacting_with_ghosts" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">interacting_with_ghosts</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Test ghost agent interaction across ranks (debug utility).</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.performItalianProductionSystemModel" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">performItalianProductionSystemModel</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Run the Italian farm production cycle on ranks &gt; 0.</p>
+<p>For each farm: updates the wheat price from the policy maker
+ghost, decides production inputs, performs LCA impact
+assessment, and harvests.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.updatePolicies" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updatePolicies</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Let each farm evaluate and potentially change its adopted policy.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.recordFarmsData" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">recordFarmsData</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Log detailed per-farm data to the tabular CSV logger.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.computeItalianProduction" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">computeItalianProduction</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Aggregate farm-level data and compute total Italian production.</p>
+<p>Each farm on ranks &gt; 0 contributes to aggregate variables.
+An MPI reduction sums production, input usage, and policy
+acreage across all ranks. Results are stored for use by
+<code>updateItalianProductionAndStock</code>.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.updateItalianProductionAndStock" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateItalianProductionAndStock</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Update the Italian international producer with simulated output.</p>
+<p>Before the switch-on tick, uses a fixed FAOSTAT-based
+production value. After that, uses the aggregated durum
+wheat production computed from the farm sub-model.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.computeLCAindicators" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">computeLCAindicators</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compute aggregate LCA endpoint indicators using Brightway2.</p>
+<p>On rank 0, updates the EcoWHEATaly Brightway2 database with
+aggregate Italian input quantities (tractor energy, nitrogen,
+herbicide, insecticide), runs the LCA calculation for ReCiPe
+2016 endpoint categories, and writes DALY and species-year
+scores to the output CSV.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.step" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">step</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Execute one simulation step for all farms (legacy scheduler hook).</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.log_international_data" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">log_international_data</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Write international prices, stocks, and sold quantities to CSV files.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.log_agents" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">log_agents</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Log per-farm data and aggregate statistics (legacy logger).</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ecowheataly_repast_model.Model.start" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">start</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Start the simulation by executing the scheduled event loop.</p>
+
+
+    </div>
+
+</div>
+
 
 
   </div>
@@ -773,6 +1238,63 @@
 
     <div class="doc doc-contents ">
 
+        <p>Deserialize an agent from its saved state tuple.</p>
+<p>Called by repast4py during MPI synchronization to reconstruct
+agents (or their ghosts) on remote ranks.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>agent_data</code>
+            </td>
+            <td>
+                  <code><span title="typing.Tuple">Tuple</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Tuple produced by an agent's <code>save()</code> method.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A newly constructed agent instance of the appropriate type.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
     </div>
 
@@ -788,6 +1310,8 @@
 
 
     <div class="doc doc-contents ">
+
+        <p>Entry point: create the model and start the simulation.</p>
 
 
     </div>
@@ -815,7 +1339,11 @@
 
     <div class="doc doc-contents first">
 
-        <p>Class for Farmers</p>
+        <p>Farm agent module for the EcoWHEATaly model.</p>
+<p>Defines the Farm agent representing Italian wheat farms. Each farm
+optimizes production inputs (nitrogen, herbicide, insecticide),
+evaluates agri-environmental policy adoption, performs life cycle
+impact assessment, and harvests wheat yield subject to stochastic risk.</p>
 
 
 
@@ -919,6 +1447,37 @@
 
 
 
+        <p>Repast4py agent representing an Italian wheat farm.</p>
+<p>Each farm decides production inputs by maximizing profit given a
+Cobb-Douglas-like production function, optionally constrained by
+agri-environmental policies (eco-schemes and SRA interventions).
+After input decisions, the farm performs an LCA impact assessment
+and harvests wheat yield drawn from a stochastic distribution.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="agents.farm.Farm.TYPE">TYPE</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Agent type identifier used by repast4py context.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 
 
@@ -951,7 +1510,305 @@
 
     <div class="doc doc-contents ">
 
-        <p>The policy maker collects the last 12 wheat prices on the Italian market. This function retrieves the vector of prices from the policy maker ghost, makes the average, and update farmer's variable. The farmer will use this average price when decide production inputs.</p>
+        <p>Update the expected wheat price from the policy maker ghost.</p>
+<p>Retrieves the last 12 Italian market wheat prices stored by
+the policy maker ghost agent, computes their average, and
+updates the farm's price variables used in input optimization.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tmpmodel</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The simulation Model instance providing access
+to the repast4py context and schedule.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.compute_unconstrained_production_inputs" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">compute_unconstrained_production_inputs</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compute optimal production inputs without policy constraints.</p>
+<p>Solves the first-order conditions to find the profit-maximizing
+target yield and derives the corresponding input levels for
+nitrogen, herbicide, and insecticide. Results are stored in
+the <code>unconstrained_*</code> attributes.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.compute_constrained_production_inputs" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">compute_constrained_production_inputs</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compute production inputs under mandatory policy constraints.</p>
+<p>For inputs flagged as mandatory by the adopted policy, uses the
+constrained input levels to determine a feasible target yield.
+The yield is set to the minimum across constrained inputs.
+Results are stored in the <code>constrained_*</code> attributes.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.decide_production_inputs" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">decide_production_inputs</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Decide production inputs and compute final yield target.</p>
+<p>Solves the profit-maximization problem to determine optimal
+nitrogen, herbicide, and insecticide levels. Applies policy
+multipliers to adjust inputs and yield if a policy is adopted.
+Also computes tractor hours based on altimetry and profit per
+hectare.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.keep_or_change_policy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">keep_or_change_policy</span><span class="p">(</span><span class="n">tmpmodel</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Evaluate whether to adopt, keep, or abandon an agri-environmental policy.</p>
+<p>Compares the net benefit of each available policy (payment
+minus profit loss minus administrative costs) against the
+current situation. Uses a logistic adoption probability to
+decide whether to switch policy. If a policy is adopted,
+computes the corresponding input multipliers.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tmpmodel</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The simulation Model instance providing access
+to the policy maker ghost agent.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.perform_life_cyle_impact_assessment" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">perform_life_cyle_impact_assessment</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Perform a simplified Life Cycle Impact Assessment for this farm.</p>
+<p>Customizes the LCA technology (A) and biosphere (B) matrices
+with the farm's actual input levels (tractor energy, nitrogen
+fertilizer, herbicide, insecticide) and computes ReCiPe 2016
+endpoint indicators for human health (DALY) and ecosystem
+quality (species-year).</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.harvest" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">harvest</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Simulate the wheat harvest with stochastic yield.</p>
+<p>Draws the actual harvested yield from a normal distribution
+centred on the policy-adjusted target yield, bounded by zero
+and the target. Computes total production by multiplying
+yield per hectare by wheat acreage.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.add_to_aggregate_variables" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">add_to_aggregate_variables</span><span class="p">(</span><span class="n">aggregate_log</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Accumulate this farm's outputs into aggregate statistics.</p>
+<p>Adds production, input usage, and policy adoption acreage to
+the shared aggregate data log used for MPI reduction.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>aggregate_log</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="AggregateData
+
+
+  
+      dataclass
+   (utils.utils.AggregateData)" href="#utils.utils.AggregateData">AggregateData</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Mutable data object collecting totals
+across all farms in this rank.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.farm.Farm.save" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Serialize the agent state for MPI communication.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Tuple">Tuple</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The agent's unique identifier tuple <code>(id, type, rank)</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -987,6 +1844,11 @@
 </h2>
 
     <div class="doc doc-contents first">
+
+        <p>Policy maker agent module for the EcoWHEATaly model.</p>
+<p>Defines the PolicyMaker agent that tracks Italian wheat market
+prices and manages the set of agri-environmental policies available
+to farms (eco-schemes and SRA interventions).</p>
 
 
 
@@ -1024,6 +1886,37 @@
 
 
 
+        <p>Repast4py agent representing the Italian policy maker.</p>
+<p>The policy maker maintains a rolling history of Italian wheat
+prices and holds the DataFrame of available agri-environmental
+policies with their parameters (payments, input effects,
+administrative costs). It is shared across MPI ranks via the
+ghost agent mechanism.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="agents.policy_maker.PolicyMaker.TYPE">TYPE</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Agent type identifier used by repast4py context.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 
 
@@ -1044,6 +1937,188 @@
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.policy_maker.PolicyMaker.updateItalianPricesHystory" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateItalianPricesHystory</span><span class="p">(</span><span class="n">latestPrice</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Append the latest wheat price and keep the last 12 entries.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>latestPrice</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Most recent Italian wheat equilibrium price.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.policy_maker.PolicyMaker.save" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Serialize the agent state for MPI communication.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Tuple">Tuple</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A tuple of <code>(uid, italianPricesHystory, policies)</code></p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Tuple">Tuple</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>used by <code>restore_agent</code> to reconstruct the agent.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.policy_maker.PolicyMaker.update" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">update</span><span class="p">(</span><span class="n">italian_ph</span><span class="p">,</span> <span class="n">italian_policies</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Update the ghost agent state without full reconstruction.</p>
+<p>Called during MPI synchronization to refresh the ghost copy
+of this agent on remote ranks.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>italian_ph</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Updated list of Italian wheat prices.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>italian_policies</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Updated policies DataFrame.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.policy_maker.PolicyMaker.print_status" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">print_status</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Print a short status message identifying this agent.</p>
+
+
+    </div>
+
+</div>
 
 
 
@@ -1074,6 +2149,12 @@
 </h2>
 
     <div class="doc doc-contents first">
+
+        <p>International buyer agent module for the EcoWHEATaly model.</p>
+<p>Defines the InternationalBuyer agent representing a world-region
+wheat buyer (e.g., North Africa, Central Asia). Each buyer maintains
+per-producer demand functions and evolves its buying strategy by
+shifting demand from expensive to cheap producers over time.</p>
 
 
 
@@ -1111,6 +2192,36 @@
 
 
 
+        <p>Repast4py agent representing an international wheat buyer.</p>
+<p>Each buyer is associated with a geographic area that has its own
+domestic demand and production. It maintains linear demand
+functions toward each international producer and adjusts them
+based on observed price differentials and transport costs.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="agents.international_buyer.InternationalBuyer.TYPE">TYPE</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Agent type identifier used by repast4py context.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 
 
@@ -1131,6 +2242,482 @@
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_buyer.InternationalBuyer.initializeBuyingStrategy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">initializeBuyingStrategy</span><span class="p">(</span><span class="n">int_availability_status</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Initialize demand functions toward each international producer.</p>
+<p>Builds per-producer linear demand functions characterized by a
+quantity at the average price, a higher-demand quantity, and an
+elasticity. Allocates import demand across producers based on
+their export market shares. Also prepares the bought-quantities
+tracking structure with transport cost information.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>int_availability_status</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame summarizing each
+producer's output, export openness, and market share.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_buyer.InternationalBuyer.update_transport_costs" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">update_transport_costs</span><span class="p">(</span><span class="n">delta_tc</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Update transport cost coefficients and recalculate per-producer costs.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>delta_tc</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Increment to add to both sea and land transport
+cost coefficients (per ton per km).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_buyer.InternationalBuyer.answerDemandQueryFromProducer" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">answerDemandQueryFromProducer</span><span class="p">(</span><span class="n">prodName</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return this buyer's demand function parameters for a producer.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>prodName</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Area name of the querying producer.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A pandas Series with demand at average price, higher</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>demand, and demand elasticity for the given producer.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_buyer.InternationalBuyer.checkObtainedQuantitiesAndEvolveBuyingStrategy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">checkObtainedQuantitiesAndEvolveBuyingStrategy</span><span class="p">(</span><span class="n">tmpcontext</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Update buying strategy based on latest market outcomes.</p>
+<p>Records the equilibrium prices and exchanged quantities from
+each producer, then shifts demand from expensive to cheap
+producers using a logistic function of the price range.
+Applies optional simulated annealing to reduce the magnitude
+of demand shifts over time.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tmpcontext</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The simulation Model instance providing access
+to the repast4py context.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_buyer.InternationalBuyer.switchAnnealingOn" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">switchAnnealingOn</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enable simulated annealing on demand reallocation.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_buyer.InternationalBuyer.switchAnnealingOff" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">switchAnnealingOff</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Disable simulated annealing on demand reallocation.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_buyer.InternationalBuyer.resetPercentageToMove" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">resetPercentageToMove</span><span class="p">(</span><span class="n">percentage</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Set the percentage of demand to shift between producers.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>percentage</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>New demand-movement fraction (0 to 1).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_buyer.InternationalBuyer.resetAnnealingSpeed" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">resetAnnealingSpeed</span><span class="p">(</span><span class="n">speed</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Set the annealing speed for demand reallocation decay.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>speed</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>New annealing speed coefficient.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_buyer.InternationalBuyer.resetDemandElasticity" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">resetDemandElasticity</span><span class="p">(</span><span class="n">new_elasticity</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Set the demand elasticity for all producer demand functions.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>new_elasticity</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>New elasticity value applied to all
+demand functions.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_buyer.InternationalBuyer.save" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Serialize the agent state for MPI communication.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Tuple">Tuple</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The agent's unique identifier tuple <code>(id, type, rank)</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_buyer.InternationalBuyer.print_status" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">print_status</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Print a short status message identifying this agent.</p>
+
+
+    </div>
+
+</div>
 
 
 
@@ -1161,6 +2748,12 @@
 </h2>
 
     <div class="doc doc-contents first">
+
+        <p>International producer agent module for the EcoWHEATaly model.</p>
+<p>Defines the InternationalProducer agent representing a world-region
+wheat producer (e.g., North America, Eastern Europe). Each producer
+manages its stock, performs monthly market sessions to find the
+equilibrium price, and harvests once per year.</p>
 
 
 
@@ -1198,6 +2791,36 @@
 
 
 
+        <p>Repast4py agent representing an international wheat producer.</p>
+<p>Each producer holds a wheat stock that decreases with monthly
+sales and increases at harvest. During market sessions, it
+aggregates demand from all buyers and finds the equilibrium
+price where aggregate demand equals available supply.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="agents.international_producer.InternationalProducer.TYPE">TYPE</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Agent type identifier used by repast4py context.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 
 
@@ -1218,6 +2841,240 @@
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_producer.InternationalProducer.updateStockAtInitialization" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateStockAtInitialization</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Recalculate initial stock based on production and gather month.</p>
+<p>Used by Italy to overwrite the default FAOSTAT-based stock
+after the model replaces Italian production with simulated
+farm output.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_producer.InternationalProducer.updateStock" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">updateStock</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Apply a proportional change to stock and production.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>delta</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Fractional change to apply (e.g., -0.05 for a
+5% reduction).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_producer.InternationalProducer.performMarketSession" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">performMarketSession</span><span class="p">(</span><span class="n">tmpcontext</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Perform a monthly market session and find the equilibrium price.</p>
+<p>Collects linear demand functions from all international buyers,
+aggregates them into a demand schedule, and finds the price at
+which aggregate demand equals available monthly supply. Computes
+exchanged quantities per buyer and updates the stock. For Italy,
+also updates the policy maker's price history.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tmpcontext</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The simulation Model instance providing access
+to the repast4py context and schedule.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_producer.InternationalProducer.harvestIfgatherMonth" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">harvestIfgatherMonth</span><span class="p">(</span><span class="n">tmpcontext</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Add annual production to stock if the current month is the gather month.</p>
+<p>Italy is excluded because its production is managed separately
+by the Italian farm sub-model.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tmpcontext</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The simulation Model instance providing access
+to the schedule tick.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_producer.InternationalProducer.save" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Serialize the agent state for MPI communication.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Tuple">Tuple</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The agent's unique identifier tuple <code>(id, type, rank)</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="agents.international_producer.InternationalProducer.print_status" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">print_status</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Print a short status message identifying this agent.</p>
+
+
+    </div>
+
+</div>
 
 
 
